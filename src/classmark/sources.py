@@ -58,9 +58,7 @@ class PoliteClient:
         return r.content[:n_bytes]
 
 
-def datacite_search(
-    client: PoliteClient, query: str, n: int, random: bool = True
-) -> list[dict]:
+def datacite_search(client: PoliteClient, query: str, n: int, random: bool = True) -> list[dict]:
     """Return up to ``n`` DataCite DOI records for a Lucene query on Zenodo DOIs."""
     params = {
         "query": query,

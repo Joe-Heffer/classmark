@@ -114,8 +114,7 @@ class ClaudeBackend(Backend):
     def build_request(self, state: dict, questions: dict[str, Question]) -> dict:
         user = (
             "<state>\n" + json.dumps(state, ensure_ascii=False, indent=1) + "\n</state>\n\n"
-            "<questions>\n" + json.dumps(describe_questions(questions), ensure_ascii=False, indent=1)
-            + "\n</questions>"
+            "<questions>\n" + json.dumps(describe_questions(questions), ensure_ascii=False, indent=1) + "\n</questions>"
         )
         return {
             "model": self.model,
@@ -164,9 +163,11 @@ class ClaudeBackend(Backend):
                     "probabilities": probs,
                     "confidence": choice_confidence(probs),
                 }
-                diagnostics[qid] = {"stated_choice": a["choice"],
-                                    "stated_matches_argmax": a["choice"] == argmax,
-                                    "raw_probability_sum": raw_sum}
+                diagnostics[qid] = {
+                    "stated_choice": a["choice"],
+                    "stated_matches_argmax": a["choice"] == argmax,
+                    "raw_probability_sum": raw_sum,
+                }
             elif q.type == "score":
                 probs, raw_sum = normalise(a["probabilities"])
                 values = [probs[str(i)] for i in range(len(q.levels))]

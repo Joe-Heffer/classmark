@@ -114,8 +114,7 @@ def expand_hierarchy(h: Hierarchy) -> dict[str, Question]:
         for name, node in nodes.items():
             if node.children:
                 children = {
-                    child: c if isinstance(c, Node) else Node(description=c)
-                    for child, c in node.children.items()
+                    child: c if isinstance(c, Node) else Node(description=c) for child, c in node.children.items()
                 }
                 add(
                     qid + HIERARCHY_SEPARATOR + name,
@@ -135,8 +134,7 @@ def load_question_set(name_or_path: str | Path) -> QuestionSet:
         if len(matches) != 1:
             found = ", ".join(m.stem for m in matches) or "none"
             raise FileNotFoundError(
-                f"expected exactly one question set matching '{name_or_path}' in "
-                f"{config.QUESTIONS_DIR}; found {found}"
+                f"expected exactly one question set matching '{name_or_path}' in {config.QUESTIONS_DIR}; found {found}"
             )
         path = matches[0]
     with path.open(encoding="utf-8") as f:

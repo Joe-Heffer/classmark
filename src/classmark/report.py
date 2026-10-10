@@ -3,7 +3,7 @@
 import json
 import math
 import statistics
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import matplotlib
@@ -49,11 +49,18 @@ def e1_items(results: list[dict], qs: QuestionSet, handcheck: dict[str, str]) ->
         probs = r["answers"][qid]["probabilities"]
         pred = argmax(probs)
         gold = r["labels"][qs.label]
-        items.append({
-            "doi": r["doi"], "gold": {gold}, "gold_primary": gold, "pred": pred, "p": probs[pred],
-            "ranked": sorted(probs, key=probs.get, reverse=True),
-            "flags": r["noise_flags"], "checked": handcheck.get(r["doi"]),
-        })
+        items.append(
+            {
+                "doi": r["doi"],
+                "gold": {gold},
+                "gold_primary": gold,
+                "pred": pred,
+                "p": probs[pred],
+                "ranked": sorted(probs, key=probs.get, reverse=True),
+                "flags": r["noise_flags"],
+                "checked": handcheck.get(r["doi"]),
+            }
+        )
     return {"resource type": items}
 
 
@@ -94,18 +101,32 @@ def e2_items(results: list[dict], qs: QuestionSet, handcheck: dict[str, str]) ->
         greedy_sub = argmax(r["answers"][f"{root} > {greedy_top}"]["probabilities"])
         common = {"doi": r["doi"], "flags": r["noise_flags"]}
         if gold_top:
-            top_items.append({
-                **common, "gold": gold_top, "gold_primary": sorted(gold_top)[0], "pred": pred_top,
-                "p": top_probs[pred_top], "ranked": sorted(top_probs, key=top_probs.get, reverse=True),
-                "checked": checked_top,
-            })
+            top_items.append(
+                {
+                    **common,
+                    "gold": gold_top,
+                    "gold_primary": sorted(gold_top)[0],
+                    "pred": pred_top,
+                    "p": top_probs[pred_top],
+                    "ranked": sorted(top_probs, key=top_probs.get, reverse=True),
+                    "checked": checked_top,
+                }
+            )
         if gold_sub:
-            sub_items.append({
-                **common, "gold": gold_sub, "gold_primary": sorted(gold_sub)[0], "pred": best["path"][-1],
-                "p": best["joint_probability"], "ranked": [p["path"][-1] for p in paths],
-                "checked": checked_sub, "beam_path": best["path"],
-                "greedy_pred": greedy_sub, "beam_differs_from_greedy": best["path"][-1] != greedy_sub,
-            })
+            sub_items.append(
+                {
+                    **common,
+                    "gold": gold_sub,
+                    "gold_primary": sorted(gold_sub)[0],
+                    "pred": best["path"][-1],
+                    "p": best["joint_probability"],
+                    "ranked": [p["path"][-1] for p in paths],
+                    "checked": checked_sub,
+                    "beam_path": best["path"],
+                    "greedy_pred": greedy_sub,
+                    "beam_differs_from_greedy": best["path"][-1] != greedy_sub,
+                }
+            )
     return {"broad field": top_items, "subfield": sub_items}
 
 
@@ -115,8 +136,11 @@ ITEM_BUILDERS = {"e1": e1_items, "e2": e2_items}
 def score(items: list[dict], use_checked: bool = False) -> dict:
     """Metrics over items. With ``use_checked``, only hand-checked items, scored against those labels."""
     if use_checked:
-        items = [{**i, "gold": i["checked"] if isinstance(i["checked"], set) else {i["checked"]}}
-                 for i in items if i.get("checked")]
+        items = [
+            {**i, "gold": i["checked"] if isinstance(i["checked"], set) else {i["checked"]}}
+            for i in items
+            if i.get("checked")
+        ]
     if not items:
         return {"n": 0}
     correct = [i["pred"] in i["gold"] for i in items]
@@ -167,10 +191,17 @@ def reliability_plot(scores: dict[str, dict], title: str, path: Path) -> None:
             continue
         st = STYLE[backend.split("-")[0]]
         bins = [b for b in metrics.reliability_bins(s["_conf"], s["_correct"], config.ECE_BINS) if b["count"]]
-        ax.plot([b["mean_confidence"] for b in bins], [b["accuracy"] for b in bins],
-                color=st["color"], linewidth=2, marker=st["marker"], markersize=6,
-                markeredgecolor=SURFACE, markeredgewidth=1.5,
-                label=f"{st['label']} (ECE {s['ece']:.3f}, n={s['n']})")
+        ax.plot(
+            [b["mean_confidence"] for b in bins],
+            [b["accuracy"] for b in bins],
+            color=st["color"],
+            linewidth=2,
+            marker=st["marker"],
+            markersize=6,
+            markeredgecolor=SURFACE,
+            markeredgewidth=1.5,
+            label=f"{st['label']} (ECE {s['ece']:.3f}, n={s['n']})",
+        )
     ax.set_xlim(0, 1.02)
     ax.set_ylim(0, 1.02)
     ax.legend(frameon=False, fontsize=8, labelcolor=INK, loc="upper left", bbox_to_anchor=(0, -0.16))
@@ -181,15 +212,27 @@ def reliability_plot(scores: dict[str, dict], title: str, path: Path) -> None:
 
 def coverage_plot(scores: dict[str, dict], title: str, path: Path) -> None:
     fig, ax = _axes(title, "Coverage (share auto-accepted)", "Accuracy of accepted items")
-    ax.axhline(config.TARGET_ACCURACY, color=MUTED, linewidth=1, linestyle="--",
-               label=f"{config.TARGET_ACCURACY:.0%} accuracy target")
+    ax.axhline(
+        config.TARGET_ACCURACY,
+        color=MUTED,
+        linewidth=1,
+        linestyle="--",
+        label=f"{config.TARGET_ACCURACY:.0%} accuracy target",
+    )
     for backend, s in scores.items():
         if not s.get("n"):
             continue
         st = STYLE[backend.split("-")[0]]
         curve = sorted(metrics.coverage_curve(s["_conf"], s["_correct"]), key=lambda p: p["coverage"])
-        ax.plot([p["coverage"] for p in curve], [p["accuracy"] for p in curve], color=st["color"],
-                linewidth=2, marker=st["marker"], markersize=4, label=st["label"])
+        ax.plot(
+            [p["coverage"] for p in curve],
+            [p["accuracy"] for p in curve],
+            color=st["color"],
+            linewidth=2,
+            marker=st["marker"],
+            markersize=4,
+            label=st["label"],
+        )
     ax.set_xlim(0, 1.02)
     ax.set_ylim(0, 1.02)
     ax.legend(frameon=False, fontsize=8, labelcolor=INK, loc="upper left", bbox_to_anchor=(0, -0.16))
@@ -255,7 +298,7 @@ def build_report(experiment: str) -> Path:
     lines = [
         f"# {exp.upper().split('_')[0]}: {qs.title}",
         "",
-        f"Generated {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC from `results/{exp}/`. "
+        f"Generated {datetime.now(UTC):%Y-%m-%d %H:%M} UTC from `results/{exp}/`. "
         f"Question set: `questions/{exp}.yaml`. Records sampled: {len(records)} "
         f"(see `data/{exp}/query.json`). Hand-checked labels available: {len(handcheck)}.",
         "",
@@ -269,9 +312,11 @@ def build_report(experiment: str) -> Path:
 
     for level in levels:
         lines += [f"## {level.capitalize()}", ""]
-        table = ["| System | Subset | n | Accuracy | Macro-F1 | Top-3 | ECE | Mean p | "
-                 f"Coverage at {config.TARGET_ACCURACY:.0%} | Threshold |",
-                 "| - | - | -: | -: | -: | -: | -: | -: | -: | -: |"]
+        table = [
+            "| System | Subset | n | Accuracy | Macro-F1 | Top-3 | ECE | Mean p | "
+            f"Coverage at {config.TARGET_ACCURACY:.0%} | Threshold |",
+            "| - | - | -: | -: | -: | -: | -: | -: | -: | -: |",
+        ]
         full_scores = {}
         for b in backends:
             lv = items[b][level]
@@ -308,46 +353,66 @@ def build_report(experiment: str) -> Path:
             for b in backends:
                 lv = items[b][level]
                 differs = sum(i["beam_differs_from_greedy"] for i in lv)
-                lines.append(f"* {b}: beam search (width {config.BEAM_WIDTH}) chose a different "
-                             f"subfield from greedy search for {differs} of {len(lv)} records.")
+                lines.append(
+                    f"* {b}: beam search (width {config.BEAM_WIDTH}) chose a different "
+                    f"subfield from greedy search for {differs} of {len(lv)} records."
+                )
             lines.append("")
 
         lines += [f"### Most confident errors: {level}", ""]
         for b in backends:
-            errors = sorted((i for i in items[b][level] if i["pred"] not in i["gold"]),
-                            key=lambda i: -i["p"])[: config.CONFIDENT_ERRORS_SHOWN]
-            lines += [f"**{b}**", "", "| p | Predicted | Depositor label | Record | Noise flags |",
-                      "| -: | - | - | - | - |"]
+            errors = sorted((i for i in items[b][level] if i["pred"] not in i["gold"]), key=lambda i: -i["p"])[
+                : config.CONFIDENT_ERRORS_SHOWN
+            ]
+            lines += [
+                f"**{b}**",
+                "",
+                "| p | Predicted | Depositor label | Record | Noise flags |",
+                "| -: | - | - | - | - |",
+            ]
             for i in errors:
                 title = records.get(i["doi"], {}).get("title", "")[:70].replace("|", "/")
                 url = records.get(i["doi"], {}).get("url") or f"https://doi.org/{i['doi']}"
-                lines.append(f"| {i['p']:.2f} | {i['pred']} | {'; '.join(sorted(i['gold']))} | "
-                             f"[{title}]({url}) | {', '.join(i['flags']) or '–'} |")
+                lines.append(
+                    f"| {i['p']:.2f} | {i['pred']} | {'; '.join(sorted(i['gold']))} | "
+                    f"[{title}]({url}) | {', '.join(i['flags']) or '–'} |"
+                )
             if not errors:
                 lines.append("| – | – | – | – | – |")
             lines.append("")
 
-    lines += ["## Latency, tokens and cost", "",
-              "| System | Model | Records | Median latency (s) | Mean input tokens | Mean output tokens | "
-              "Mean cost per record (US$) | Cost per 1,000 records (US$) | Errors |",
-              "| - | - | -: | -: | -: | -: | -: | -: | -: |"]
+    lines += [
+        "## Latency, tokens and cost",
+        "",
+        "| System | Model | Records | Median latency (s) | Mean input tokens | Mean output tokens | "
+        "Mean cost per record (US$) | Cost per 1,000 records (US$) | Errors |",
+        "| - | - | -: | -: | -: | -: | -: | -: | -: |",
+    ]
     for b in backends:
         c = cost_rows(results[b])
         if c:
-            lines.append(f"| {b} | {', '.join(c['model'])} | {c['records']} | {c['latency']:.2f} | "
-                         f"{c['in_tokens']:.0f} | {c['out_tokens']:.0f} | {c['cost']:.6f} | "
-                         f"{c['cost'] * 1000:.3f} | {c['errors']} |")
-    lines += ["",
-              "Latency is the wall-clock time of the original API call (cached answers keep the latency "
-              "of the call that produced them). Costs use list prices in `classmark/config.py`. Claude's "
-              "output tokens include its (hidden) adaptive thinking. Neither API reports energy use, so "
-              "token counts are the only available proxy for environmental impact (Blueprint P14).", ""]
+            lines.append(
+                f"| {b} | {', '.join(c['model'])} | {c['records']} | {c['latency']:.2f} | "
+                f"{c['in_tokens']:.0f} | {c['out_tokens']:.0f} | {c['cost']:.6f} | "
+                f"{c['cost'] * 1000:.3f} | {c['errors']} |"
+            )
+    lines += [
+        "",
+        "Latency is the wall-clock time of the original API call (cached answers keep the latency "
+        "of the call that produced them). Costs use list prices in `classmark/config.py`. Claude's "
+        "output tokens include its (hidden) adaptive thinking. Neither API reports energy use, so "
+        "token counts are the only available proxy for environmental impact (Blueprint P14).",
+        "",
+    ]
 
     reversed_runs = [b for b in results if b.endswith("-reversed")]
     if reversed_runs:
-        lines += ["## Option-order sensitivity", "",
-                  "Share of records whose prediction is unchanged when Choice options are given in "
-                  "reverse order.", ""]
+        lines += [
+            "## Option-order sensitivity",
+            "",
+            "Share of records whose prediction is unchanged when Choice options are given in reverse order.",
+            "",
+        ]
         for rb in reversed_runs:
             base = rb.removesuffix("-reversed")
             if base in results:
@@ -359,18 +424,26 @@ def build_report(experiment: str) -> Path:
     stated = [d["stated_matches_argmax"] for dd in diag for d in dd.values() if "stated_matches_argmax" in d]
     sums = [d["raw_probability_sum"] for dd in diag for d in dd.values() if "raw_probability_sum" in d]
     if stated:
-        lines += ["## Baseline diagnostics", "",
-                  f"* Claude's stated label matched the most probable option in its own distribution in "
-                  f"{sum(stated)}/{len(stated)} answers.",
-                  f"* Raw probability sums before rescaling: median {statistics.median(sums):.3f}, "
-                  f"range {min(sums):.3f}–{max(sums):.3f}.", ""]
+        lines += [
+            "## Baseline diagnostics",
+            "",
+            f"* Claude's stated label matched the most probable option in its own distribution in "
+            f"{sum(stated)}/{len(stated)} answers.",
+            f"* Raw probability sums before rescaling: median {statistics.median(sums):.3f}, "
+            f"range {min(sums):.3f}–{max(sums):.3f}.",
+            "",
+        ]
 
     flagged = sum(1 for r in records.values() if r["noise_flags"])
-    lines += ["## Label noise", "",
-              f"{flagged} of {len(records)} sampled records have at least one noise flag (heuristics in "
-              "`classmark/sample.py`). Gold labels are what depositors entered, so some 'errors' above "
-              "will be label errors. Fill in `checked_label` in "
-              f"`data/{exp}/handcheck.csv` and re-run the report to score against checked labels.", ""]
+    lines += [
+        "## Label noise",
+        "",
+        f"{flagged} of {len(records)} sampled records have at least one noise flag (heuristics in "
+        "`classmark/sample.py`). Gold labels are what depositors entered, so some 'errors' above "
+        "will be label errors. Fill in `checked_label` in "
+        f"`data/{exp}/handcheck.csv` and re-run the report to score against checked labels.",
+        "",
+    ]
     path = out_dir / "report.md"
     path.write_text("\n".join(lines), encoding="utf-8")
     return path

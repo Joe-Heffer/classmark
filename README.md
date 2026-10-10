@@ -1,5 +1,10 @@
 # classmark
 
+[![CI](https://github.com/Joe-Heffer/classmark/actions/workflows/ci.yml/badge.svg)](https://github.com/Joe-Heffer/classmark/actions/workflows/ci.yml)
+[![Licence: Apache 2.0](https://img.shields.io/badge/licence-Apache%202.0-blue.svg)](LICENSE)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](pyproject.toml)
+[![Code style: ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
 Classify research datasets against controlled vocabularies and metadata standards, with calibrated confidence so uncertain answers go to a person.
 
 > **Status:** experimental. This is a research prototype for evaluating AI models as components of the [Data Director](https://doi.org/10.15497/RDA00157). Interfaces will change.
@@ -60,7 +65,7 @@ All requests and responses are logged with model version and token usage, so eve
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-git clone <this repository> && cd classmark
+git clone https://github.com/Joe-Heffer/classmark.git && cd classmark
 uv sync --extra scientific   # the extra adds netCDF4/h5py for reading scientific file headers
 ```
 
@@ -165,7 +170,7 @@ No answer from this tool is applied automatically. Coverage–accuracy curves sh
 uv run pytest
 ```
 
-The tests cover the profiler, the evaluation metrics, beam search, question-set validation and report generation. They use no network and no API keys.
+The tests cover the profiler, the evaluation metrics, beam search, question-set validation and report generation. They use no network and no API keys. CI also runs `ruff` and builds the package; see [CONTRIBUTING.md](CONTRIBUTING.md) for the full set of checks.
 
 ## Repository map
 
@@ -179,3 +184,15 @@ The tests cover the profiler, the evaluation metrics, beam search, question-set 
 * `src/classmark/hierarchy.py`: beam search over chained Choice answers
 * `src/classmark/metrics.py`, `report.py`: evaluation and reports
 * `docs/requirements-mapping.md`: how the Blueprint's requirements map to judgement types
+
+## Contributing
+
+Contributions are welcome, including new question sets and checked labels. Please read [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Report security problems privately, as described in [SECURITY.md](SECURITY.md). Changes are recorded in [CHANGELOG.md](CHANGELOG.md).
+
+## Citing
+
+If you use `classmark` in your research, please cite it. GitHub’s “Cite this repository” button gives the reference in APA and BibTeX formats, from the metadata in [CITATION.cff](CITATION.cff).
+
+## Licence
+
+Apache License 2.0. See [LICENSE](LICENSE).

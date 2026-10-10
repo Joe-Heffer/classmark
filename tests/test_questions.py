@@ -21,15 +21,29 @@ def test_shipped_question_sets_are_valid():
 
 
 def test_choice_needs_two_options(tmp_path):
-    path = write(tmp_path, {"experiment": "x", "title": "x", "label": "x",
-                            "questions": {"q": {"type": "choice", "instructions": "?", "options": {"a": None}}}})
+    path = write(
+        tmp_path,
+        {
+            "experiment": "x",
+            "title": "x",
+            "label": "x",
+            "questions": {"q": {"type": "choice", "instructions": "?", "options": {"a": None}}},
+        },
+    )
     with pytest.raises(ValueError, match="at least two options"):
         load_question_set(path)
 
 
 def test_options_on_noul_rejected(tmp_path):
-    path = write(tmp_path, {"experiment": "x", "title": "x", "label": "x",
-                            "questions": {"q": {"type": "noul", "instructions": "?", "options": {"a": None}}}})
+    path = write(
+        tmp_path,
+        {
+            "experiment": "x",
+            "title": "x",
+            "label": "x",
+            "questions": {"q": {"type": "noul", "instructions": "?", "options": {"a": None}}},
+        },
+    )
     with pytest.raises(ValueError, match="only allowed on choice"):
         load_question_set(path)
 

@@ -22,9 +22,9 @@ import io
 import json
 import mimetypes
 import tempfile
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable
 
 from classmark import config
 
@@ -118,7 +118,10 @@ def parse_table(data: bytes, delimiter: str, complete: bool) -> dict | None:
     rows = [r for r in rows if any(c.strip() for c in r)]
     if not rows:
         return None
-    clip = lambda r: [truncate(c, config.CELL_CAP_CHARS) for c in r[: config.MAX_TABLE_COLUMNS]]
+
+    def clip(r: list[str]) -> list[str]:
+        return [truncate(c, config.CELL_CAP_CHARS) for c in r[: config.MAX_TABLE_COLUMNS]]
+
     table = {"columns": clip(rows[0]), "sample_rows": [clip(r) for r in rows[1 : 1 + config.SAMPLE_ROWS]]}
     if len(rows[0]) > config.MAX_TABLE_COLUMNS:
         table["columns_shown"] = f"{config.MAX_TABLE_COLUMNS} of {len(rows[0])}"
@@ -134,9 +137,7 @@ def scientific_attributes(path: Path, ext: str) -> dict | None:
             with netCDF4.Dataset(path) as ds:
                 attrs = {k: str(ds.getncattr(k)) for k in ds.ncattrs()}
                 variables = {
-                    name: " ".join(
-                        str(getattr(v, a)) for a in ("long_name", "units") if hasattr(v, a)
-                    )
+                    name: " ".join(str(getattr(v, a)) for a in ("long_name", "units") if hasattr(v, a))
                     for name, v in ds.variables.items()
                 }
         else:
@@ -146,8 +147,11 @@ def scientific_attributes(path: Path, ext: str) -> dict | None:
                 attrs = {k: str(v) for k, v in f.attrs.items()}
                 variables = {}
                 f.visititems(
-                    lambda name, obj: variables.setdefault(name, str(getattr(obj, "shape", "")))
-                    if isinstance(obj, h5py.Dataset) else None
+                    lambda name, obj: (
+                        variables.setdefault(name, str(getattr(obj, "shape", "")))
+                        if isinstance(obj, h5py.Dataset)
+                        else None
+                    )
                 )
     except ImportError:
         return {"note": "netCDF4/h5py not installed; install the 'scientific' extra"}
@@ -214,6 +218,7 @@ def build_state(
     for f in files:
         key = ext_of(f.name) or "(none)"
         exts[key] = exts.get(key, 0) + 1
+
     def head_for_mime(f: FileEntry) -> bytes | None:
         # Local files with an unrecognised extension are sniffed by magic bytes;
         # remote files are not fetched just for this.
@@ -268,6 +273,7 @@ def enforce_cap(state: dict, cap: int, meta: dict) -> None:
                 obj[path[-1]] = truncate(obj[path[-1]].removesuffix(TRUNCATION_MARK), limit)
                 return True
             return False
+
         return step, f"{'.'.join(path)} to {limit} chars"
 
     def trim_list(getter, keep: int, label: str):
@@ -277,6 +283,7 @@ def enforce_cap(state: dict, cap: int, meta: dict) -> None:
                 del items[keep:]
                 return True
             return False
+
         return step, label
 
     def drop(section: str):
@@ -290,6 +297,7 @@ def enforce_cap(state: dict, cap: int, meta: dict) -> None:
                     del t["sample_rows"][keep:]
                     changed = True
             return changed
+
         return step, f"table sample rows to {keep}"
 
     steps = [
@@ -341,8 +349,9 @@ def profile_record(record: dict, client, exclude: list[str] = (), cap: int = con
         return p
 
     try:
-        profile = build_state(record.get("title"), record.get("description"), files,
-                              read_head, local_copy, exclude, cap)
+        profile = build_state(
+            record.get("title"), record.get("description"), files, read_head, local_copy, exclude, cap
+        )
     finally:
         tmp.cleanup()
     profile.meta["source"] = record.get("url") or record.get("doi")
@@ -359,7 +368,7 @@ def profile_folder(
     """Profile a local folder. Nothing is sent anywhere."""
     folder = Path(folder)
     files = [
-        FileEntry(name=str(p.relative_to(folder)), size=p.stat().st_size, path=p)
+        FileEntry(name=p.relative_to(folder).as_posix(), size=p.stat().st_size, path=p)
         for p in sorted(folder.rglob("*"))
         if p.is_file() and not any(part.startswith(".") for part in p.relative_to(folder).parts)
     ]
