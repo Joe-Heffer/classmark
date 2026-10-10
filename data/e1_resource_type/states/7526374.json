@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "CHSH Game Reductions",
+  "description": "Final Report for graduate student project in CMSC858F at University of Maryland, College Park. The paper covers 2-player non-local games, their lower bounds, and their reductions to single-player cryptographic protocols.\n\nAbout CMSC858F: Algorithmic Lower Bounds (Fun with Hardness Proofs) is an algorithms course co-taught by Prof. Mohammad Hajiaghayi at University of Maryland and Prof. Erik Demaine at College Park.",
+  "files": {
+   "count": 1,
+   "total_size": "1.3 MB",
+   "extensions": {
+    "pdf": 1
+   },
+   "listing (largest first)": [
+    "final_report.pdf | 1.3 MB | application/pdf"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 621,
+  "source": "https://zenodo.org/records/7526374",
+  "exclude": []
+ }
+}

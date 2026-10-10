@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Learning from Wrong Predictions in Low-Resource Neural Machine Translation",
+  "files": {
+   "count": 2,
+   "total_size": "2.1 MB",
+   "extensions": {
+    "pdf": 2
+   },
+   "listing (largest first)": [
+    "Poster_LREC_COLIG.pdf | 1.4 MB | application/pdf",
+    "2024_lrec.pdf | 723.0 kB | application/pdf"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 287,
+  "source": "https://zenodo.org/records/15394124",
+  "exclude": []
+ }
+}

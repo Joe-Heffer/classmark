@@ -1,0 +1,26 @@
+{
+ "state": {
+  "title": "Théorie du spectre de la conscience unifiée",
+  "description": "Try to mapp the consciousness. Translate it by your own methods.",
+  "files": {
+   "count": 2,
+   "total_size": "85.9 kB",
+   "extensions": {
+    "pdf": 2
+   },
+   "listing (largest first)": [
+    "TSCU_integral_fulltext_v1.pdf | 80.9 kB | application/pdf",
+    "TSCU_complet_v1.pdf | 5.0 kB | application/pdf"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 353,
+  "source": "https://zenodo.org/records/18373428",
+  "exclude": []
+ }
+}

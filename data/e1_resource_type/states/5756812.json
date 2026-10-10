@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Fig. 2 in Description of a New Species of Butterflyfish, Roa australis, from Northwestern Australia (Pisces: Perciformes: Chaetodontidae)",
+  "description": "Fig. 2. left to right. Roa modesta. Osezaki, Japan. Depth 20 m. Length 12 cm TL. Photograph by Rudie Kuiter. Roa jayakari. Gulf of Aqaba, Red Sea. Depth 180 m. Photograph by Jürgen Schauer, from submersible. Roa excelsa. BPBM 24754. Length 98 mm SL. Photograph of preserved specimen and colouring by Rudie Kuiter after Allen et al., 1998.",
+  "files": {
+   "count": 1,
+   "total_size": "687.5 kB",
+   "extensions": {
+    "png": 1
+   },
+   "listing (largest first)": [
+    "figure.png | 687.5 kB | image/png"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 648,
+  "source": "https://zenodo.org/records/5756812",
+  "exclude": []
+ }
+}

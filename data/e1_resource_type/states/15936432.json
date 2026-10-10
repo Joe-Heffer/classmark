@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Clinal variation in Eucalyptus incrassata",
+  "description": "(Uploaded by Plazi from the Biodiversity Heritage Library) No abstract provided.",
+  "files": {
+   "count": 1,
+   "total_size": "4.2 MB",
+   "extensions": {
+    "pdf": 1
+   },
+   "listing (largest first)": [
+    "bhlpart302947.pdf | 4.2 MB | application/pdf"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 303,
+  "source": "https://zenodo.org/records/15936432",
+  "exclude": []
+ }
+}

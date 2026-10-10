@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Green MIR data table 2024",
+  "description": "This dataset includes spreadsheets (in ms-excel and pdf formats) of the paper analyses presented in the 2024 ISMIR conference paper on the computational cost of music-Ai. Paper title: Green MIR? Investigating computational cost of recent music-Ai research in ISMIR",
+  "files": {
+   "count": 1,
+   "total_size": "227.6 kB",
+   "extensions": {
+    "zip": 1
+   },
+   "listing (largest first)": [
+    "GreenMIR2024data.zip | 227.6 kB | application/zip"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 478,
+  "source": "https://zenodo.org/records/12750436",
+  "exclude": []
+ }
+}

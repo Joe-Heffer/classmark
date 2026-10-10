@@ -1,0 +1,42 @@
+{
+  "experiment": "e1_resource_type",
+  "drawn_at": "2026-10-10T18:31:53+00:00",
+  "source": "https://api.datacite.org/dois (random=true, client-id=cern.zenodo) joined to https://zenodo.org/api/records/<id>",
+  "strata": {
+    "Text": "types.resourceTypeGeneral:Text",
+    "JournalArticle": "types.resourceTypeGeneral:JournalArticle",
+    "Image": "types.resourceTypeGeneral:Image",
+    "Dataset": "types.resourceTypeGeneral:Dataset",
+    "Software": "types.resourceTypeGeneral:Software",
+    "Preprint": "types.resourceTypeGeneral:Preprint",
+    "ConferencePaper": "types.resourceTypeGeneral:ConferencePaper",
+    "Book": "types.resourceTypeGeneral:Book",
+    "BookChapter": "types.resourceTypeGeneral:BookChapter",
+    "Report": "types.resourceTypeGeneral:Report",
+    "Other": "types.resourceTypeGeneral:Other",
+    "Journal": "types.resourceTypeGeneral:Journal",
+    "Dissertation": "types.resourceTypeGeneral:Dissertation",
+    "Audiovisual": "types.resourceTypeGeneral:Audiovisual",
+    "ConferenceProceeding": "types.resourceTypeGeneral:ConferenceProceeding",
+    "InteractiveResource": "types.resourceTypeGeneral:InteractiveResource",
+    "Model": "types.resourceTypeGeneral:Model",
+    "PeerReview": "types.resourceTypeGeneral:PeerReview",
+    "ComputationalNotebook": "types.resourceTypeGeneral:ComputationalNotebook",
+    "Event": "types.resourceTypeGeneral:Event",
+    "PhysicalObject": "types.resourceTypeGeneral:PhysicalObject",
+    "Workflow": "types.resourceTypeGeneral:Workflow",
+    "Standard": "types.resourceTypeGeneral:Standard",
+    "Collection": "types.resourceTypeGeneral:Collection",
+    "OutputManagementPlan": "types.resourceTypeGeneral:OutputManagementPlan"
+  },
+  "requested": 20,
+  "candidates_checked": 25,
+  "kept": 20,
+  "filters": [
+    "version DOIs only (no concept DOIs)",
+    "one version per Zenodo concept record",
+    "access_right == open",
+    "at least one file"
+  ],
+  "note": "DataCite random sampling has no seed; records.jsonl is the reproducible sample."
+}

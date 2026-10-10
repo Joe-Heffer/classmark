@@ -1,0 +1,83 @@
+{
+ "state": {
+  "title": "Instagram use by Brazilian sports journalists as influencer-journalists (anonymized dataset, n=151, June 2024)",
+  "description": "This dataset provides a derived and anonymized dataset at the profile level (N=151) on brazilian sports journalists on Instagram (≥100,000 followers), with public metrics collected via web scraping in June 2024. The package includes (i) the final analysis dataset (CSV), (ii) a variable dictionary/codebook (CSV), and (iii) an R script and README to reproduce the associated statistics. To minimize risks of reidentification and potential harm, direct identifiers (e.g., usernames and URLs) are not included.",
+  "files": {
+   "count": 4,
+   "total_size": "40.3 kB",
+   "extensions": {
+    "csv": 2,
+    "txt": 1,
+    "r": 1
+   },
+   "listing (largest first)": [
+    "instagram_influencer_journalists_BR_2024-06_anonymized.csv | 26.2 kB | text/csv",
+    "script_rstudio.R | 6.4 kB | unknown",
+    "codebook.csv | 4.8 kB | text/csv",
+    "README.txt | 2.9 kB | text/plain"
+   ]
+  },
+  "tables": [
+   {
+    "file": "codebook.csv",
+    "columns": [
+     "﻿Variable;Description;Type"
+    ],
+    "sample_rows": [
+     [
+      "user_likes;Average number of likes acros …[truncated]"
+     ],
+     [
+      "user_followers;Total number of followers …[truncated]"
+     ],
+     [
+      "user_engagement;Average engagement rate …[truncated]"
+     ]
+    ]
+   },
+   {
+    "file": "instagram_influencer_journalists_BR_2024-06_anonymized.csv",
+    "columns": [
+     "﻿username@;professional_affiliations;pro …[truncated]",
+     "symbols/brands or theme);stories_use;bio …[truncated]"
+    ],
+    "sample_rows": [
+     [
+      ";Not independent;211371;355;5526;0;1;1;0 …[truncated]",
+      "1;151",
+      "3;0",
+      "000094;0;0;0;0;1;0;0;0;0;1;0;0;327",
+      "2;0;0;0;;;;;;;;;;;;"
+     ],
+     [
+      ";Not independent;155390;1555;560;1;0;1;0 …[truncated]",
+      "3;119",
+      "8;0",
+      "000774;1;0;0;0;1;1;0;0;0;0;1;0;122",
+      "8;0;1;0;;;;;;;;;;;;"
+     ],
+     [
+      ";Not independent;438918;1978;957;1;0;1;1 …[truncated]",
+      "9;134",
+      "6;0",
+      "000240;1;0;0;1;1;1;0;0;0;0;1;0;338",
+      "3;0;1;0;;;;;;;;;;;;"
+     ]
+    ]
+   }
+  ],
+  "readme": {
+   "file": "README.txt",
+   "text": "Instagram use by Brazilian sports journalists as influencer-journalists (anonymized dataset, n=151, June 2024)\r\rOverview\n\rThis repository provides an anonymized dataset on how Brazilian sports journalists use Instagram, highlighting the rise of the influencer-journalist, a professional combining journalistic practices with influencer marketing strategies.\n\rUnit of analysis: Instagram profile (brazilian sports journalists)\rSample size: n = 151 profiles\rCollection period: June 2024\rPost observation window: 10 posts per profile (used for post-derived variables and averages)\rIdentifiers: no handles, names, or direct profile URLs (anonymized)\rNote: platform metrics (followers, likes, comments) are time-sensitive and may change. This dataset reflects a snapshot at collection time.\n\rFiles\n\rData: instagram_influencer_journalists_BR_2024-06_anonymized.csv (main dataset with one row per profile)\rCodebook: codebook.csv (variable dictionary: Variable|Description|Type)\rScripts: script_rstudio.R (reproducible R scripts in RStudio)\r\rMethods\n\rData source and sampling\rthe dataset comprises publicly available information from Instagram profiles of brazilian sports influencer-journalists. All records were obtained exclusively from public profile pages and publicly visible posts. No authentication was used and no attempts were made to access private accounts, stories not publicly visible, direct messages, or any other non-public interaction. Profiles were included if they were public and explici …[truncated]"
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 3444,
+  "source": "https://zenodo.org/records/18266049",
+  "exclude": []
+ }
+}

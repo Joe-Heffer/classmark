@@ -1,0 +1,31 @@
+{
+ "state": {
+  "title": "A  proposal for magnesium, acid-base minerals, and trace minerals requirements for dairy cows: Supplemenary material",
+  "description": "Supplementary Material S1: Prisma and reference studies selected for the analysis.\nSupplementary Material S2: Dataset of macromineral balance trials, statistical codes, and model outputs.\nSupplementary Material S3: Dataset of trace mineral balance trials, statistical codes, and model outputs.\nSupplementary Material S4: Predictive model for urinary mineral excretion.\nSupplementary Material S5: Comparison of weighting methods used in the meta-analysis.\nSupplementary Material S6: Milk mineral dataset, statistical codes, and model outputs.",
+  "files": {
+   "count": 6,
+   "total_size": "7.7 MB",
+   "extensions": {
+    "rar": 4,
+    "pdf": 2
+   },
+   "listing (largest first)": [
+    "S2 - Macromineral.rar | 3.3 MB | unknown",
+    "S3 - Trace mineral.rar | 2.9 MB | unknown",
+    "S6 - Mineral Milk.rar | 1.0 MB | unknown",
+    "S1 - PRISMA and Reference selected studies.pdf | 274.7 kB | application/pdf",
+    "S5 - Weigthing Methods Comparison.pdf | 131.8 kB | application/pdf",
+    "S4 - Mineral urinary predition missing data.rar | 89.9 kB | unknown"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 1159,
+  "source": "https://zenodo.org/records/15230795",
+  "exclude": []
+ }
+}

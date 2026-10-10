@@ -1,0 +1,121 @@
+# E1: Resource type
+#
+# Classify a repository record into the DataCite Metadata Schema 4.6
+# resourceTypeGeneral vocabulary.
+# Source: https://datacite-metadata-schema.readthedocs.io/en/4.6/appendices/appendix-1/resourceTypeGeneral/
+#
+# How to edit this file
+# ---------------------
+# * Each option is "Name: description". The model sees both the name and the
+#   description, so use the description to say how an option differs from its
+#   neighbours (for example Text vs Report vs JournalArticle). The model reads
+#   descriptions literally: state boundary cases explicitly.
+# * Do not rename options without also changing the gold labels: option names
+#   must match DataCite's resourceTypeGeneral values exactly.
+# * Option order matters slightly (the model can favour the first option), so
+#   the runner can also ask with the order reversed to measure this.
+
+experiment: e1_resource_type
+title: Resource type (DataCite resourceTypeGeneral)
+label: resource_type_general
+
+questions:
+  resource_type:
+    type: choice
+    instructions: >
+      Which DataCite resource type best describes the research output in this
+      repository record? Judge from the title, the description and the files
+      listed in the state. Choose the type of the deposited output itself, not
+      the type of work it is related to.
+    options:
+      Dataset: >
+        Data encoded in a structured form for analysis: tables, measurements,
+        survey responses, model output, corpora, databases. Choose this when the
+        files are mainly data (for example CSV, netCDF, HDF5, Excel, JSON, or
+        archives of data files), even if a README or paper is included.
+      Software: >
+        Source code, scripts, packages or executables. Choose this when the
+        main content is code (for example .py, .R, .m, .cpp, a GitHub release
+        archive), not a notebook or a workflow definition.
+      ComputationalNotebook: >
+        A Jupyter, R Markdown or similar notebook that mixes code, results and
+        narrative, deposited as the main item.
+      Workflow: >
+        A structured series of steps that can be executed, such as a Snakemake,
+        Nextflow, Galaxy or CWL workflow definition.
+      Model: >
+        An abstract, conceptual, graphical, mathematical or visual model, such
+        as a trained machine-learning model, a simulation model definition or a
+        3D model.
+      Image: >
+        A visual representation other than text: photographs, figures, scans,
+        drawings, maps, microscopy images. Choose this for image files deposited
+        as the main item.
+      Audiovisual: >
+        Moving images, with or without sound: videos, animations, recorded
+        talks.
+      Sound: >
+        Audio only: recordings of speech, music, field sound.
+      Text: >
+        A text document that is not more specifically a journal article,
+        preprint, report, book, book chapter, conference paper, dissertation or
+        data paper. Includes posters, slides, lecture notes, essays and
+        presentations deposited as PDF.
+      JournalArticle: >
+        An article published in a scholarly journal, usually the publisher's
+        version, with journal name, volume or issue.
+      Preprint: >
+        A version of a scholarly article posted before peer review or formal
+        publication.
+      Report: >
+        A document reporting on a project, technical study or policy
+        investigation, such as a deliverable, technical report, white paper or
+        working paper.
+      Book: >
+        A complete monograph or edited volume.
+      BookChapter: >
+        One chapter or section of a book.
+      ConferencePaper: >
+        A paper or extended abstract presented at a conference.
+      ConferenceProceeding: >
+        A collection of papers from a conference, published as a whole.
+      Dissertation: >
+        A thesis written for an academic degree (PhD, master's, bachelor's).
+      DataPaper: >
+        An article whose main purpose is to describe a dataset (for example in a
+        data journal), not the dataset itself.
+      Journal: >
+        A whole journal or journal issue, not a single article.
+      PeerReview: >
+        A review of another work written as part of peer review.
+      Standard: >
+        A formal specification or standard agreed by a community or body.
+      OutputManagementPlan: >
+        A data management plan or software management plan.
+      StudyRegistration: >
+        A pre-registration of a study: protocol, hypotheses and analysis plan
+        registered before the results are known.
+      Instrument: >
+        A device, tool or apparatus used to obtain, measure or analyse data,
+        described as the deposited item.
+      PhysicalObject: >
+        A physical, three-dimensional object or specimen (for example a sample
+        or artefact) described by the record.
+      InteractiveResource: >
+        A resource that requires interaction to be understood or used, such as
+        a web page, an online course module, a game or a simulation interface.
+      Service: >
+        An organised system that provides functions to users, such as a data
+        portal, API or web service.
+      Collection: >
+        An aggregation of several separately identified resources, described as
+        a group.
+      Event: >
+        A non-persistent, time-based occurrence such as a conference, workshop
+        or exhibition, described as the deposited item.
+      Award: >
+        A grant or award, described as the deposited item.
+      Project: >
+        A research project described as the deposited item.
+      Other: >
+        A resource that fits none of the other types.

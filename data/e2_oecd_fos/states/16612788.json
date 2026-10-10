@@ -1,0 +1,28 @@
+{
+ "state": {
+  "title": "Alleviation of negative emotional and pain responses through amygdala-hypothalamic social circuit activation",
+  "description": "'Load_code' is a collection of all codes used in this study; 'Load_data' contains all raw datasets.",
+  "files": {
+   "count": 3,
+   "total_size": "1.4 GB",
+   "extensions": {
+    "rar": 2,
+    "prism": 1
+   },
+   "listing (largest first)": [
+    "Load_data.rar | 1.4 GB | unknown",
+    "MeA_Pain_Final.prism | 1.7 MB | unknown",
+    "Load_code.rar | 14.3 kB | unknown"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 469,
+  "source": "https://zenodo.org/records/16612788",
+  "exclude": []
+ }
+}

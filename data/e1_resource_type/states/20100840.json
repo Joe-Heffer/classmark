@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Universal Recursive Dynamics: Reader's Guide to the Foundational Pair and Companion Technical Note",
+  "description": "This guide accompanies the three-document Universal Recursive Dynamics deposit comprising Paper A (Originary Structural Conditions), Paper B (Above-Threshold Operational Architecture), and the Companion Technical Note (Part III's Mathematical Apparatus and the Operational Architecture of Register). It orients first-time readers, names the interpretive disciplines that govern the documents (breadth/priority, structural-realization-not-tier, inference-available-not-asserted, capacity-as-implicit/instantiation-as-undecidable, and frontier-over-conundrum), summarizes each document's structure and arc, and recommends reading orders for readers approaching from different interests: foundational ontology, AI, cascade-level questions, and formalization. The guide does not substitute for the documents themselves; it is intended to make the deposit set navigable.",
+  "files": {
+   "count": 1,
+   "total_size": "107.2 kB",
+   "extensions": {
+    "pdf": 1
+   },
+   "listing (largest first)": [
+    "Readers_Guide.pdf | 107.2 kB | application/pdf"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 1149,
+  "source": "https://zenodo.org/records/20100840",
+  "exclude": []
+ }
+}

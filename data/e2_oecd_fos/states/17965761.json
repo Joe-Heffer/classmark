@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Data from Skills2Capabilities WP3 Interviews in Germany",
+  "description": "Work Package 3 focuses on the challenges and changes in the demand for vocational qualifications. The interviews conducted within WP3 explore developments in the metalworking and electrical professions with respect to training regulations. Accordingly, the interviews were conducted with two experts from these sectors, who were able to provide an authentic insight into the respective structures.",
+  "files": {
+   "count": 1,
+   "total_size": "226.9 kB",
+   "extensions": {
+    "pdf": 1
+   },
+   "listing (largest first)": [
+    "Skills2Capabilities_WP3_Interviews_Germany.pdf | 226.9 kB | application/pdf"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 667,
+  "source": "https://zenodo.org/records/17965761",
+  "exclude": []
+ }
+}

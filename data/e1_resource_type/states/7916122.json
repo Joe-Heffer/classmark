@@ -1,0 +1,27 @@
+{
+ "state": {
+  "title": "FUNCTIONS OF POLAR LIPIDS IN THE XYLEM APOPLAST: A BIOMIMETIC STUDY",
+  "description": "In vascular plants, water transport occurs mostly under negative pressure through xylem conduits connected via cellulosic pit membranes. This system is known as the xylem apoplast. In angiosperms, polar lipids are found in the xylem apoplast, on surfaces, in pit membranes, and in sap, but their functions are relatively unknown. One possibility is that polar lipids interact with ions as sap passes through pit membranes, causing changes in hydraulic conductance, the so-called ionic effect. By coating gas bubbles in sap, lipids could also affect embolism formation via cavitation under negative pressure. Two projects investigated whether (1) polar lipids coated on cellulose, such as on xylem pit membranes, will interact with ions, thereby affecting hydraulic conductance, and (2) whether lipids affect embolism formation under negative pressure. To answer these research questions, two artificial system were constructed to mimic conditions in xylem and negative pressure found in plants. One system was used to perfuse solutions differing in ionic composition through cellulose with or without lipids, and the other was an evaporation driven PDMS-hydrogel system to create negative pressure in a droplet of water with or without lipids. Experiments performed to mimic flow through cellulose pit membranes in plant xylem found that hydraulic conductance was not affected by ions in the presence of lipids. Similarly, experiments performed to mimic negative pressure in plant xylem found that th …[truncated]",
+  "files": {
+   "count": 1,
+   "total_size": "2.3 MB",
+   "extensions": {
+    "pdf": 1
+   },
+   "listing (largest first)": [
+    "27 2023-05-09b Garcia Mora Thesis FINAL.pdf | 2.3 MB | application/pdf"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [
+   "description to 1500 chars"
+  ],
+  "notes": [],
+  "state_chars": 1788,
+  "source": "https://zenodo.org/records/7916122",
+  "exclude": []
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Processed data and models in support of manuscript \"Deciphering the state of the lower crust and upper mantle with multi-physics inversion\"",
+  "description": "Data and model files in original format used in the manuscript  \"Deciphering the state of the lower crust and upper mantle with multi-physics inversion\". These files are accompanied by a set of python scripts to reproduce several of the figures in the Manuscript. Please refer to the Manuscript and the included files for further information on data origin and how to use the scripts. A link will be added upon acceptance.",
+  "files": {
+   "count": 1,
+   "total_size": "31.7 MB",
+   "extensions": {
+    "zip": 1
+   },
+   "listing (largest first)": [
+    "Supplementary_V2.zip | 31.7 MB | application/zip"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 752,
+  "source": "https://zenodo.org/records/5799257",
+  "exclude": []
+ }
+}

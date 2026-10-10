@@ -1,0 +1,74 @@
+{
+ "state": {
+  "title": "Shah Jo Risalo Labaeled",
+  "description": "Shah Abdul Latif Bhittai’s Poetry Dataset – “Shah Jo Risalo”\n\nDeveloped by:\n\nAbdul Majid Bhurgri Institute of Language Engineering (AMBILE), Hyderabad\nUnder the administrative control of the Culture, Tourism, Antiquities & Archives Department, Government of Sindh.\n\nDataset Overview:\n\nThe \"Shah Jo Risalo\" Dataset is a rich linguistic and literary resource comprising 43,779 Sindhi poetic verses extracted from the 30 traditional Surs of Shah Abdul Latif Bhittai’s magnum opus. Each verse is paired with a Sindhi-language explanation, primarily derived from the authoritative interpretations of Dr. Nabi Bakhsh Baloch.\n\nThis dataset offers profound insights into the philosophical, spiritual, and cultural themes embedded in the poetry, making it an invaluable asset for Sindhi literature researchers, linguists, educators, and AI/NLP developers.\n\nDataset Features:\n\nTotal Verses: 43,779 poetic lines from 30 classical Surs\n\nLanguage: Clean Sindhi script in Unicode format\n\nFile Format: CSV file titled Shah Jo Risalo labeled.csv\n\nCSV Structure:\n\nmelody (سر): Name of the Sur\n\nchapter (داستان): Subsection within the Sur\n\nchapter_verse_number: Verse number within the dastan\n\npoetry_text (بيت): Original Sindhi poetic verse\n\nexplanation (وضاحت): Sindhi interpretation of the verse\n\nkeywords: Search-optimized terms\n\ncompiler_name:Name of the compiler of various versions of Shah Jo Risalo.**\n\nCompilers:\n\nAllama I. I. Qazi\n\nBanhoo Khan Shaikh\n\nDr. Nabi Bux 28 Surs Explanation\n\nDr. Ernest Trumpp\n\nGM …[truncated]",
+  "files": {
+   "count": 1,
+   "total_size": "25.2 MB",
+   "extensions": {
+    "csv": 1
+   },
+   "listing (largest first)": [
+    "Shah Jo Risalo labaled.csv | 25.2 MB | text/csv"
+   ]
+  },
+  "tables": [
+   {
+    "file": "Shah Jo Risalo labaled.csv",
+    "columns": [
+     "melody",
+     "peotry_type",
+     "chapter",
+     "chapter_verse",
+     "poetry_text",
+     "explanation",
+     "compiler",
+     "keywords"
+    ],
+    "sample_rows": [
+     [
+      "سُر ڪلياڻ",
+      "بيت",
+      "1",
+      "1",
+      "اوَلِ اَللهُ  عَلِيمُ، اَعليٰ عالَمَ جو …[truncated]",
+      "سڀ کان پهرين (تعريف جي لائق) الله آهي جي …[truncated]",
+      "ڊاڪٽر نبي بخش بلوچ",
+      "سر ڪلياڻ بيت ڊاڪٽر نبي بخش بلوچ اول الله …[truncated]"
+     ],
+     [
+      "سُر ڪلياڻ",
+      "بيت",
+      "1",
+      "2",
+      "وَحدَهُ لاشَرِيڪَ لَہُ، اِيءُ وِهائجِ وِ …[truncated]",
+      "هو (الله تعاليٰ) هڪ آهي، سندس ٻيو ڪو مٽ …[truncated]",
+      "ڊاڪٽر نبي بخش بلوچ",
+      "سر ڪلياڻ بيت ڊاڪٽر نبي بخش بلوچ وحده لاش …[truncated]"
+     ],
+     [
+      "سُر ڪلياڻ",
+      "بيت",
+      "1",
+      "3",
+      "وَحدَهُ  لاشَرِيڪَ  لَہُ،  هِي  هيڪَڙائِ …[truncated]",
+      "’الله‘ هڪڙو آهي ۽ هن جو ڪوبه شريڪ ناهي. …[truncated]",
+      "ڊاڪٽر نبي بخش بلوچ",
+      "سر ڪلياڻ بيت ڊاڪٽر نبي بخش بلوچ وحده لاش …[truncated]"
+     ]
+    ]
+   }
+  ]
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [
+   "description to 1500 chars"
+  ],
+  "notes": [],
+  "state_chars": 2631,
+  "source": "https://zenodo.org/records/16981361",
+  "exclude": []
+ }
+}

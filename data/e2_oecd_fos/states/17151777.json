@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Physical Oceanography Data from Nuup Kangerlua (SW Greenland), 2018–2019",
+  "description": "This data is collected during monthly transect by the Greenland Climate Research Centre (https://gcrc.gl/), part of the long-term hydrographic research program in Nuup Kangerlua. \nFor more information reach out to John Mortensen (jomo@natur.gl) or Lorenz Meire (LoMe@natur.gl).\nData is from period 2018-06-06 to 2019-06-04. \n\n# name 1 = Cast: Cast name\n# name 2 = Date: YYYYMMDD, date of collection\n# name 3 = Latitude: Latitude in decimal degrees\n# name 4 = Longitude: Longitude in decimal degrees\n# name 5 = Year: year\n# name 6 = Month: month\n# name 7= Day: day of the month\n# name 8= Time: time (format HH:MM) in UTC\n# name 9 = SBEtime: time in julian days from start of year\n# name 10 = Pressure: Pressure, Strain Gauge [db]\n# name 11 = Temperature: Temperature [ITS-90, deg C]\n# name 12 = Salinity: Salinity, Practical [PSU]\n# name 13 = Density: Density [density, kg/m^3]",
+  "files": {
+   "count": 1,
+   "total_size": "2.5 MB",
+   "extensions": {
+    "txt": 1
+   },
+   "listing (largest first)": [
+    "HydroNK.txt | 2.5 MB | text/plain"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 1135,
+  "source": "https://zenodo.org/records/17151777",
+  "exclude": []
+ }
+}
