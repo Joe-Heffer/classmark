@@ -1,0 +1,44 @@
+{
+ "state": {
+  "title": "Database - Bridge clogging and debris - July 2021 flood",
+  "description": "This dataset documents 71 floating debris accumulations at bridges following an extreme hydrological event that hit Belgium and Germany in July 2021. Data were collected from various sources including public authorities’ documents, public online database, post event pictures and field visits. The dataset covers bridge geometry, flood conditions and debris accumulation. In particular, it systematically details deposits dimensions and classifies deposits components, which contain a significant portion of man-made objects, in addition to driftwood. \n\nThe dataset is stored in a single CSV file, with semicolon separator. The file contains 72 lines and 63 columns. First line contains the label of the columns parameters. Each of the 71 following lines contains the data of one bridge and corresponding accumulation. \n\nA data descriptor is under review in Nature Scientfic Data: \nErpicum S., Poppema D., Burghardt L., Benet L., Wüthrich D., Klopries E., Dewals B., (submitted) A dataset of floating debris accumulation at bridges after July 2021 Flood in Germany and Belgium, Nature Scientific Data",
+  "files": {
+   "count": 1,
+   "total_size": "25.2 kB",
+   "extensions": {
+    "csv": 1
+   },
+   "listing (largest first)": [
+    "Database Debris - Field data Flood 2021 publication.csv | 25.2 kB | text/csv"
+   ]
+  },
+  "tables": [
+   {
+    "file": "Database Debris - Field data Flood 2021 publication.csv",
+    "columns": [
+     "Id;Institution;Encoder;Date;Type;River;M …[truncated]"
+    ],
+    "sample_rows": [
+     [
+      "10001;RWTH;LB;11/10/2022;Bridge;Ahr;Sinz …[truncated]"
+     ],
+     [
+      "10016;RWTH;LB;11/16/2022;Bridge;Ahr;Bad …[truncated]"
+     ],
+     [
+      "10021;RWTH;LB;11/16/2022;Bridge;Ahr;Bad …[truncated]"
+     ]
+    ]
+   }
+  ]
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 1718,
+  "source": "https://zenodo.org/records/11551195",
+  "exclude": []
+ }
+}

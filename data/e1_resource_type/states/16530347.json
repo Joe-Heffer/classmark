@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Chinese Outputs on the International Scene WP4 - Corpus of Sources",
+  "description": "The Excel file contains a list of resources examined for Work Package 4 (WP4), Chinese Outputs on the International Scene, within the project Chinese Conceptualisation of the Rule of Law (CLAW): Challenges for the International Legal Order. This project is funded by the OP JAC initiative MSCA Fellowships at Palacký University II (CZ.02.01.01/00/22_010/0006945) and hosted by Palacký University Olomouc, Czech Republic.\n\nThe file includes four sheets:\n\nPRC Statements, Position Papers, and Notices (2012–2022)\n\nHuman Rights Council (HRC) Resolutions Sponsored by the PRC (2012–2022)\n\nVoting Records of the People's Republic of China in the Human Rights Council (2012–2022)\n\nUnited Nations Security Council – Vetoes Cast (2012–2022)\n\nSheets 1, 2, and 4 are intended for qualitative analysis, while sheet 3 is primarily used for quantitative analysis. The listed documents are sourced from the United Nations Human Rights Council, the United Nations Digital Library System, the Universal Rights Group, and the Permanent Mission of the People's Republic of China to the United Nations.\n\nThe content analysis of these resources will serve as the basis for the creation of new open-access outputs.",
+  "files": {
+   "count": 1,
+   "total_size": "223.4 kB",
+   "extensions": {
+    "xlsx": 1
+   },
+   "listing (largest first)": [
+    "WP4D4.1.xlsx | 223.4 kB | unknown"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 1447,
+  "source": "https://zenodo.org/records/16530347",
+  "exclude": []
+ }
+}

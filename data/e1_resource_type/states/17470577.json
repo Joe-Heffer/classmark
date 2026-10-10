@@ -1,0 +1,27 @@
+{
+ "state": {
+  "title": "Boletín Insights. Tecnología, Sociedad y Educación",
+  "description": "Colegio Naval José Prudencio Padilla. El boletín \"Insights: Tecnología, Sociedad y Educación\", una publicación anual del Grupo de Investigación e Innovación en TIC (GI2T), se enfoca en transformar la evidencia técnica sobre el acceso y la apropiación de las Tecnologías de la Información y la Comunicación (TIC) en decisiones, proyectos y políticas que fortalezcan el territorio y la calidad educativa.\n\nDescripción Específica de esta Edición\n\nEsta publicación corresponde a la segunda edición del boletín, presentando los resultados detallados de un ejercicio de caracterización digital realizado durante el año 2024 en la Colegio Naval José Prudencio Padilla.\n\nEl estudio se dirigió a 38 estudiantes de los grados de educación media, con un propósito doble: describir el acceso real a recursos tecnológicos y conectividad, y analizar cómo están incorporando dichas tecnologías en su vida académica y cotidiana.\n\nEl cuestionario aplicado recoge información en cuatro dimensiones centrales:\n\nDatos socioeconómicos y contexto familiar: Entorno material y de acompañamiento en el hogar.\n\nAcceso a las TIC: Disponibilidad de dispositivos, conectividad y barreras de acceso.\n\nUso de las TIC: Hábitos digitales con fines educativos, comunicativos y de ocio.\n\nApropiación de las TIC: Habilidades digitales, creación de contenido, colaboración en entornos virtuales y percepción de competencia tecnológica.\n\nLos resultados permiten a la institución evaluarse objetivamente frente a sus propias realidades in …[truncated]",
+  "files": {
+   "count": 1,
+   "total_size": "897.7 kB",
+   "extensions": {
+    "pdf": 1
+   },
+   "listing (largest first)": [
+    "BoletinEdicion2_V5.pdf | 897.7 kB | application/pdf"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [
+   "description to 1500 chars"
+  ],
+  "notes": [],
+  "state_chars": 1774,
+  "source": "https://zenodo.org/records/17470577",
+  "exclude": []
+ }
+}

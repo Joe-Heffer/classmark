@@ -1,0 +1,122 @@
+# E2: Subject classification (OECD Fields of Science and Technology)
+#
+# The OECD FoS classification (revised 2007, carried into the Frascati Manual
+# 2015, Table 2.2) has 6 broad fields and 42 subfields. DataCite stores these
+# as subjects with subjectScheme "Fields of Science and Technology (FOS)",
+# written "FOS: <name>".
+#
+# How this is asked
+# -----------------
+# The taxonomy is asked as chained Choice questions in a single request: one
+# question for the broad field, plus one question per broad field asking which
+# subfield applies *assuming* that field. Beam search over the probabilities
+# picks the best path in code (see classmark/hierarchy.py). The answers to the
+# subfield questions under fields that do not apply are simply ignored.
+#
+# How to edit this file
+# ---------------------
+# * Names must match the OECD/DataCite names (case and punctuation are
+#   normalised when compared with gold labels).
+# * Descriptions say what each field covers and, where fields overlap, where
+#   the boundary lies. The model reads them literally.
+
+experiment: e2_oecd_fos
+title: Subject (OECD Fields of Science and Technology)
+label: fos
+
+hierarchy:
+  id: fos
+  instructions: >
+    Which broad field of science and technology does the research in this
+    repository record belong to? Judge from the subject matter described in
+    the title, the description and the files, not from the methods or software
+    used.
+  child_instructions: >
+    Assume this record belongs to the broad field "{parent}". Which subfield of
+    {parent} best describes the subject matter of the research?
+  options:
+    Natural sciences:
+      description: >
+        Mathematics, computing, physics, chemistry, earth and environmental
+        sciences, and biology studied for their own sake rather than for an
+        engineering, medical or agricultural application.
+      children:
+        Mathematics: Pure mathematics, applied mathematics, statistics and probability.
+        Computer and information sciences: >
+          Computer science, algorithms, machine learning, information science
+          and bioinformatics as a methods field. Not electrical or electronic
+          hardware engineering.
+        Physical sciences: >
+          Physics of matter and energy: particle, nuclear, atomic, condensed
+          matter, optics, acoustics, astronomy and astrophysics.
+        Chemical sciences: Chemistry, including organic, inorganic, physical, analytical, polymer and electrochemistry.
+        Earth and related environmental sciences: >
+          Geosciences, geology, geophysics, meteorology and atmospheric
+          science, climate research, oceanography, hydrology, physical
+          geography and environmental science.
+        Biological sciences: >
+          Biology of living organisms: cell and molecular biology,
+          biochemistry, genetics, microbiology, botany, zoology, ecology,
+          evolutionary biology, marine biology.
+        Other natural sciences: Natural science that fits none of the subfields above.
+    Engineering and technology:
+      description: >
+        Applying science to design and build structures, machines, devices,
+        materials and processes.
+      children:
+        Civil engineering: Construction, structural, transport and architectural engineering.
+        Electrical engineering, electronic engineering, information engineering: >
+          Electrical and electronic engineering, robotics and automatic
+          control, telecommunications, computer hardware.
+        Mechanical engineering: Mechanical and aerospace engineering, thermodynamics, fluid mechanics in machines.
+        Chemical engineering: Chemical process engineering and plant design.
+        Materials engineering: Ceramics, coatings, composites, metallurgy, textiles and other engineered materials.
+        Medical engineering: Biomedical engineering, medical devices and medical laboratory technology.
+        Environmental engineering: Environmental and geological engineering, energy and fuels, remote sensing, mining, marine engineering.
+        Environmental biotechnology: Bioremediation and diagnostic biotechnologies for environmental management.
+        Industrial biotechnology: Bioprocessing, biocatalysis, fermentation and bio-derived products.
+        Nano-technology: Nano-materials and nano-processes.
+        Other engineering and technologies: Food technology and other engineering that fits none of the subfields above.
+    Medical and health sciences:
+      description: >
+        Human medicine and health: biomedical research aimed at human health,
+        clinical practice, public health and health care.
+      children:
+        Basic medicine: Anatomy, physiology, immunology, neuroscience, pharmacology, toxicology, pathology and medical genetics.
+        Clinical medicine: Diagnosis and treatment of disease in patients across clinical specialties, including surgery, oncology, cardiology, psychiatry and dentistry.
+        Health sciences: Public health, epidemiology, nursing, nutrition, sport and exercise science, health care services and policy.
+        Medical biotechnology: Biotechnology applied to human health, such as gene therapy and molecular diagnostics.
+        Other medical sciences: Forensic science and other medical or health science that fits none of the subfields above.
+    Agricultural sciences:
+      description: >
+        Agriculture, forestry, fisheries, animal husbandry and veterinary
+        medicine.
+      children:
+        Agriculture, forestry, and fisheries: Agronomy, crop and soil science, horticulture, forestry and fisheries.
+        Animal and dairy science: Animal husbandry and livestock production.
+        Veterinary science: Medicine of animals.
+        Agricultural biotechnology: Genetically modified crops and livestock, agricultural biotechnology.
+        Other agricultural sciences: Agricultural science that fits none of the subfields above.
+    Social sciences:
+      description: >
+        The study of human behaviour, society and institutions.
+      children:
+        Psychology: Psychology, including cognitive, social, clinical and developmental psychology.
+        Economics and business: Economics, econometrics, business, management and finance.
+        Educational sciences: Education, teaching and learning.
+        Sociology: Sociology, demography, anthropology and ethnology, social issues.
+        Law: Law, criminology and penology.
+        Political science: Political science, public administration and international relations.
+        Social and economic geography: Human geography, urban studies and transport planning.
+        Media and communications: Journalism, media studies, communication and library science.
+        Other social sciences: Social science that fits none of the subfields above.
+    Humanities:
+      description: >
+        The study of human culture: history, language, literature, philosophy,
+        religion and the arts.
+      children:
+        History and archaeology: History, archaeology and history of science.
+        Languages and literature: Linguistics, specific languages, literary studies and literary theory.
+        Philosophy, ethics and religion: Philosophy, ethics, theology and religious studies.
+        Arts (arts, history of arts, performing arts, music): Visual arts, art history, architectural design, performing arts, music, film studies.
+        Other humanities: Humanities that fit none of the subfields above.

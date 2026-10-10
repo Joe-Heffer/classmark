@@ -1,0 +1,29 @@
+{
+ "state": {
+  "title": "Content Marketing - RAG MCP",
+  "description": "Repo contenant l'ensemble des articles publiés sur blotmkt.com/ia/, générés via un pipeline IA maison.\n\nAntoine Blot - Expert SEO & Marketing digital francophone",
+  "files": {
+   "count": 1,
+   "total_size": "984 B",
+   "extensions": {
+    "md": 1
+   },
+   "listing (largest first)": [
+    "README.md | 984 B | text/markdown"
+   ]
+  },
+  "readme": {
+   "file": "README.md",
+   "text": "# blotmkt-content\n\n> Contenu SEO généré par intelligence artificielle — pipeline RAG ptimisé GEO.\n\n**[blotmkt.com](https://blotmkt.com/ia/)** · Par [Antoine Blot](https://www.antoine-blot.com) · [LinkedIn](https://www.linkedin.com/in/blotantoine/)\n\n---\n\n## À propos\n\nCe repo contient l'ensemble des articles publiés sur **blotmkt.com/ia/**, générés via un pipeline IA maison.\n\n\n## Auteur\n\n**Antoine Blot** - Expert SEO & Marketing digital francophone\n\n- Site : [antoine-blot.com](https://www.antoine-blot.com)\n- LinkedIn : [linkedin.com/in/blotantoine](https://www.linkedin.com/in/blotantoine/)\n- GitHub : [github.com/Antoine-b-market](https://github.com/Antoine-b-market)\n- ORCID : [0009-0005-6450-4528](https://orcid.org/0009-0005-6450-4528)\n\n---\n\n## Licence\n\nContenu © Antoine Blot / BlotMKT — Tous droits réservés.  \nLe contenu de ce repo est publié à des fins de transparence et d'indexation.  \nToute reproduction commerciale est interdite sans autorisation."
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 1395,
+  "source": "https://zenodo.org/records/18949464",
+  "exclude": []
+ }
+}

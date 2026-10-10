@@ -1,0 +1,24 @@
+{
+ "state": {
+  "title": "TAUSO weights",
+  "files": {
+   "count": 1,
+   "total_size": "167.0 MB",
+   "extensions": {
+    "json": 1
+   },
+   "listing (largest first)": [
+    "tauso_score_v1.json | 167.0 MB | application/json"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 184,
+  "source": "https://zenodo.org/records/21382921",
+  "exclude": []
+ }
+}

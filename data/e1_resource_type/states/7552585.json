@@ -1,0 +1,29 @@
+{
+ "state": {
+  "title": "Spatial distributions of Tribrachidium, Rugoconites, and Obamus from the Ediacara Member (Rawnsley Quartzite), South Australia",
+  "description": "The spatial distribution of in situ sessile organisms, including those from the fossil record, provides information about life histories, such as possible dispersal and/or settlement mechanisms, and how taxa are interacting with each other and their local environments. At Nilpena Ediacara National Park (NENP), South Australia, the exquisite preservation and excavation of 33 fossiliferous bedding planes from the Ediacara Member of the Rawnsley Quartzite reveals in situ communities of the Ediacara Biota. Here, the spatial distributions of three relatively common taxa, Tribrachidium, Rugoconites, and Obamus, occurring on excavated surfaces were analyzed using spatial point pattern analysis. Tribrachidium have a variable spatial distribution, implying that settlement or post-settlement conditions/preferences had an effect on populations. Rugoconites display aggregation, possibly related to their reproductive methods in combination with settlement location availability at the time of dispersal and/or settlement. Additionally, post-settlement environmental controls could be affecting Rugoconites on other surfaces, resulting in lower populations and densities. Both Tribrachidium and Rugoconites also commonly occur as individuals on a number of beds constraining possible reproductive strategies and environmental/substrate preferences. The distribution of Obamus is consistent with selective settlement, aggregating near conspecifics and on substrates of mature microbial mat. This dispe …[truncated]",
+  "files": {
+   "count": 2,
+   "total_size": "6.4 GB",
+   "extensions": {
+    "docx": 1,
+    "tif": 1
+   },
+   "listing (largest first)": [
+    "Boan_et_al._Paleobiology_Supplemental_Figures_and_Table.docx | 3.9 GB | unknown",
+    "Boan_et_al._Paleobiology_Supplemental_Figure_1_High_Qaulity.tif | 2.5 GB | image/tiff"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [
+   "description to 1500 chars"
+  ],
+  "notes": [],
+  "state_chars": 1956,
+  "source": "https://zenodo.org/records/7552585",
+  "exclude": []
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Kriyol syntax — The Portuguese-based creole language of Guinea-Bissau",
+  "description": "Resenha de:\n\nKriyol syntax — The Portuguese-based creole language of Guinea-Bissau. De De Alain Kihm. Amsterdam John Benjamins, 1994, 310p.",
+  "files": {
+   "count": 1,
+   "total_size": "690.7 kB",
+   "extensions": {
+    "pdf": 1
+   },
+   "listing (largest first)": [
+    "couto.pdf | 690.7 kB | application/pdf"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 388,
+  "source": "https://zenodo.org/records/20841568",
+  "exclude": []
+ }
+}

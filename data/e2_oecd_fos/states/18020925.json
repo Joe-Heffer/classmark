@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Animal-Level Predictors for Ketosis Risk in German Dairy Cows",
+  "description": "Imputed, bootstrapped final dataset used to produce all results in the manuscript \"Animal-Level Predictors for Ketosis Risk in German Dairy Cows\" using R Studio. \n\nPlease note: This file was subject to additional processing, including variable and category renaming.",
+  "files": {
+   "count": 1,
+   "total_size": "13.0 MB",
+   "extensions": {
+    "xlsx": 1
+   },
+   "listing (largest first)": [
+    "d_tier_new.xlsx | 13.0 MB | unknown"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 506,
+  "source": "https://zenodo.org/records/18020925",
+  "exclude": []
+ }
+}

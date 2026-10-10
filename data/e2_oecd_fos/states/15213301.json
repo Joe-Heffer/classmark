@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Schmidt Ocean Institute: FK210728 rock samples",
+  "description": "Sample log from expeditions FK210728, Biodiverse Borderlandsaboard R/V Falkor departing from San Diego, California on July 3, 2021, and returning to San Diego, California on August 6, 2023.",
+  "files": {
+   "count": 1,
+   "total_size": "14.3 kB",
+   "extensions": {
+    "xlsx": 1
+   },
+   "listing (largest first)": [
+    "FK210726_Rock-List-for-SOI.xlsx | 14.3 kB | unknown"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 426,
+  "source": "https://zenodo.org/records/15213301",
+  "exclude": []
+ }
+}

@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Code for Approximating the universal thermal climate index (UTCI) using sparse regression with orthogonal polynomials",
+  "description": "This repository contains the code and data associated with the article: “Approximating the Universal Thermal Climate Index using Sparse Regression with Orthogonal Polynomials”, available on arXiv: https://arxiv.org/abs/2508.11307\n\nThe Universal Thermal Climate Index (UTCI) offset data used in this study were originally published as supplementary material to:\nBröde, P., Fiala, D., Błażejczyk, K., et al. (2012). Deriving the operational procedure for the Universal Thermal Climate Index (UTCI). International Journal of Biometeorology, 56, 481–494. https://doi.org/10.1007/s00484-011-0454-1\n\nWe do not redistribute this dataset. Users may obtain it directly from the publisher’s website. Our accompanying script provides an automated download function that retrieves the file from the official source; users access the data under the publisher’s terms.\n\nFor additional testing, a separate dataset is included that is published under a CC-BY-4.0 license: https://zenodo.org/records/5503968\n\nPlease see README.txt for instructions on running the Jupyter notebook and reproducing the analysis, tables, and figures. The Python dependencies are specified in requirements.txt and environment.yml.",
+  "files": {
+   "count": 1,
+   "total_size": "350.4 kB",
+   "extensions": {
+    "zip": 1
+   },
+   "listing (largest first)": [
+    "UTCI_sparse_regression.zip | 350.4 kB | application/zip"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 1513,
+  "source": "https://zenodo.org/records/19799766",
+  "exclude": []
+ }
+}

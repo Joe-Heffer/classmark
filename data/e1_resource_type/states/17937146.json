@@ -1,0 +1,27 @@
+{
+ "state": {
+  "title": "Natural Flavonoids: Myricetin and Its Derivatives as Emerging Therapeutics, SAR and Molecular Target Analysis",
+  "description": "Myricetin is a flavonol found naturally with a high degree of polyhydroxylation, with a very high antioxidant activity (ORAC 4.3 units). It has become a polypharmaceutical therapeutic candidate in cancer therapy, neurodegenerative, metabolic, and heart disease. The review is a synthesis of the structure-activity relationships (SAR) of myricetin and its derivatives, describing the key role of the pyrogallol B-ring moiety in the provision of a 60 % antioxidant ability enhancement. Specific structural changes, such as methylation, glycosylation, acylation, and semi-synthetic heterocyclic conjugation, result in compounds with 50-100-fold potency increases and better metabolic stability, though with a reduced antioxidant activity at orthodox assays. Molecularly, myricetin exhibits multitarget kinase engagement (PI3K, Akt, mTOR, JAK1, Src), context-dependent MAPK modulation, robust NF-κB/STAT3 suppression, and Nrf2/ARE antioxidant response activation. Mechanistically, myricetin induces bifocal cell cycle arrest (G0/G1 via cyclin D1 downregulation and p21/p27 accumulation; G2/M via cyclin B1 suppression), intrinsic and extrinsic apoptotic pathway activation, and ROS-dependent pro-death signaling in transformed cells. Preclinical studies show that it has great efficacy in triple-negative breast cancer (IC₅₀ = 22.70-51.43 μg/mL; selectivity index = 63.64), hepatocellular carcinoma (92% tumour reduction), and Alzheimer's disease models, where tau phosphorylation is suppressed, and syna …[truncated]",
+  "files": {
+   "count": 1,
+   "total_size": "317.2 kB",
+   "extensions": {
+    "docx": 1
+   },
+   "listing (largest first)": [
+    "Natural Flavonoids - Myricetin and Its Derivatives as Emerging Therapeutics, SAR and Molecular Target Analysis.docx | 317.2 kB | unknown"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [
+   "description to 1500 chars"
+  ],
+  "notes": [],
+  "state_chars": 1899,
+  "source": "https://zenodo.org/records/17937146",
+  "exclude": []
+ }
+}

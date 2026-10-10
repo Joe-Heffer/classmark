@@ -1,0 +1,23 @@
+{
+  "experiment": "e2_oecd_fos",
+  "drawn_at": "2026-10-10T18:32:20+00:00",
+  "source": "https://api.datacite.org/dois (random=true, client-id=cern.zenodo) joined to https://zenodo.org/api/records/<id>",
+  "strata": {
+    "Natural sciences": "types.resourceTypeGeneral:Dataset AND subjects.subject:(\"FOS: Natural sciences\" OR \"FOS: Mathematics\" OR \"FOS: Computer and information sciences\" OR \"FOS: Physical sciences\" OR \"FOS: Chemical sciences\" OR \"FOS: Earth and related environmental sciences\" OR \"FOS: Biological sciences\" OR \"FOS: Other natural sciences\")",
+    "Engineering and technology": "types.resourceTypeGeneral:Dataset AND subjects.subject:(\"FOS: Engineering and technology\" OR \"FOS: Civil engineering\" OR \"FOS: Electrical engineering, electronic engineering, information engineering\" OR \"FOS: Mechanical engineering\" OR \"FOS: Chemical engineering\" OR \"FOS: Materials engineering\" OR \"FOS: Medical engineering\" OR \"FOS: Environmental engineering\" OR \"FOS: Environmental biotechnology\" OR \"FOS: Industrial biotechnology\" OR \"FOS: Nano-technology\" OR \"FOS: Other engineering and technologies\")",
+    "Medical and health sciences": "types.resourceTypeGeneral:Dataset AND subjects.subject:(\"FOS: Medical and health sciences\" OR \"FOS: Basic medicine\" OR \"FOS: Clinical medicine\" OR \"FOS: Health sciences\" OR \"FOS: Medical biotechnology\" OR \"FOS: Other medical sciences\")",
+    "Agricultural sciences": "types.resourceTypeGeneral:Dataset AND subjects.subject:(\"FOS: Agricultural sciences\" OR \"FOS: Agriculture, forestry, and fisheries\" OR \"FOS: Animal and dairy science\" OR \"FOS: Veterinary science\" OR \"FOS: Agricultural biotechnology\" OR \"FOS: Other agricultural sciences\")",
+    "Social sciences": "types.resourceTypeGeneral:Dataset AND subjects.subject:(\"FOS: Social sciences\" OR \"FOS: Psychology\" OR \"FOS: Economics and business\" OR \"FOS: Educational sciences\" OR \"FOS: Sociology\" OR \"FOS: Law\" OR \"FOS: Political science\" OR \"FOS: Social and economic geography\" OR \"FOS: Media and communications\" OR \"FOS: Other social sciences\")",
+    "Humanities": "types.resourceTypeGeneral:Dataset AND subjects.subject:(\"FOS: Humanities\" OR \"FOS: History and archaeology\" OR \"FOS: Languages and literature\" OR \"FOS: Philosophy, ethics and religion\" OR \"FOS: Arts (arts, history of arts, performing arts, music)\" OR \"FOS: Other humanities\")"
+  },
+  "requested": 20,
+  "candidates_checked": 23,
+  "kept": 20,
+  "filters": [
+    "version DOIs only (no concept DOIs)",
+    "one version per Zenodo concept record",
+    "access_right == open",
+    "at least one file"
+  ],
+  "note": "DataCite random sampling has no seed; records.jsonl is the reproducible sample."
+}

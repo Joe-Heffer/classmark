@@ -1,0 +1,26 @@
+{
+ "state": {
+  "title": "All ChemCam data and corrected Li data",
+  "description": "Supplementary data for JGR manuscript \"Boron and Lithium in Calcium Sulfate Veins: Tracking Precipitation of Diagenetic Materials in Vera Rubin Ridge, Gale Crater\". Excel files contain all LIBS data collected by the Curiosity rover between sol 1-2311 and corrected Li data for vein targets.",
+  "files": {
+   "count": 2,
+   "total_size": "4.1 MB",
+   "extensions": {
+    "xlsx": 2
+   },
+   "listing (largest first)": [
+    "All data-sol-1-2311.xlsx | 4.0 MB | unknown",
+    "Corrected-Li-ppm.xlsx | 92.1 kB | unknown"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 557,
+  "source": "https://zenodo.org/records/3877353",
+  "exclude": []
+ }
+}

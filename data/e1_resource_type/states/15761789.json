@@ -1,0 +1,24 @@
+{
+ "state": {
+  "title": "high-frame-rate video recordings from which Visual data were extracted",
+  "files": {
+   "count": 1,
+   "total_size": "78.4 MB",
+   "extensions": {
+    "mp4": 1
+   },
+   "listing (largest first)": [
+    "S1_Video.mp4 | 78.4 MB | video/mp4"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 224,
+  "source": "https://zenodo.org/records/15761789",
+  "exclude": []
+ }
+}

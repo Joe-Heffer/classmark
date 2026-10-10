@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Philosophy [IO Islamic 1730]",
+  "description": "Philosophy.\n\nThis manuscript is now IO Islamic 1730 in the India Office collections.\n\n[metadata: Otto Loth, A Catalogue of the Arabic Manuscripts in the Library of the India Office, (volume 1), no. 527 here with further notations and hyperlinks].\n\n527.\n\n1730. Size 83/4 in. by 53/4 in.; foll. 135. From twenty to twenty-five lines in a page.\n\nThe same Glosses, inelegantly written, with marginal notes.",
+  "files": {
+   "count": 1,
+   "total_size": "9.9 kB",
+   "extensions": {
+    "odt": 1
+   },
+   "listing (largest first)": [
+    "527 1730.odt | 9.9 kB | unknown"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 609,
+  "source": "https://zenodo.org/records/5459320",
+  "exclude": []
+ }
+}

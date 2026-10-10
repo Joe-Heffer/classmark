@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# classmark: the response cache is large and duplicates logs/ (which is kept for traceability)
+cache/
+results/*/dryrun/

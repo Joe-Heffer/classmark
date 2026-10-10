@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Table 1 shows primary data used for retrospective evaluation of animal production published literature 2015-2020",
+  "description": "Supplementary table hows primary data used for retrospective evaluation of animal production published literature 2015-2020.",
+  "files": {
+   "count": 1,
+   "total_size": "198.7 kB",
+   "extensions": {
+    "xlsx": 1
+   },
+   "listing (largest first)": [
+    "Supplementary Table.XLSX | 198.7 kB | unknown"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 422,
+  "source": "https://zenodo.org/records/4664121",
+  "exclude": []
+ }
+}

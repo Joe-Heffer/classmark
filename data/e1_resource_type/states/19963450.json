@@ -1,0 +1,25 @@
+{
+ "state": {
+  "title": "Завадський Олег Вікторович [Zavadskyi Oleh Viktorovych]",
+  "description": "ЗАВА́ДСЬКИЙ Олег Вікторович – поет. Член НСПУ . Закін. Укр. АМ , Інститут журналістики Київ. університету . Працює архітектором у Києві, зокрема від 2004 – у ЗАТ «Познякижитлобуд»: від 2006 – гол. арх. проектів. Осмислення законів світотворення, філософія життя і смерті, гармонія... ⚠️ Цей запис містить лише бібліографічні метадані. Повний текст доступний за посиланням [This record contains bibliographic metadata only. The full text is available at]: https://esu.com.ua/article-14987",
+  "files": {
+   "count": 1,
+   "total_size": "973 B",
+   "extensions": {
+    "txt": 1
+   },
+   "listing (largest first)": [
+    "metadata_record_14987.txt | 973 B | text/plain"
+   ]
+  }
+ },
+ "meta": {
+  "profiler_version": "1",
+  "cap_chars": 6000,
+  "truncated": [],
+  "notes": [],
+  "state_chars": 725,
+  "source": "https://zenodo.org/records/19963450",
+  "exclude": []
+ }
+}
