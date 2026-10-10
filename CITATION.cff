@@ -10,6 +10,7 @@ abstract: >-
 authors:
   - family-names: Heffer
     given-names: Joe
+    orcid: "https://orcid.org/0000-0001-8733-1117"
 version: 0.1.0
 license: Apache-2.0
 repository-code: "https://github.com/Joe-Heffer/classmark"
