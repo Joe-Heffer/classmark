@@ -108,7 +108,7 @@ def run(
             "budget_usd": budget_usd,
             "dry_run": dry_run,
             "reverse_options": reverse_options,
-            "question_set": str(qs_file.relative_to(config.ROOT)),
+            "question_set": qs_file.relative_to(config.ROOT).as_posix(),
             "question_set_sha256": hashlib.sha256(qs_file.read_bytes()).hexdigest(),
             "git_commit": git_commit(),
         }

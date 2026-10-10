@@ -368,7 +368,7 @@ def profile_folder(
     """Profile a local folder. Nothing is sent anywhere."""
     folder = Path(folder)
     files = [
-        FileEntry(name=str(p.relative_to(folder)), size=p.stat().st_size, path=p)
+        FileEntry(name=p.relative_to(folder).as_posix(), size=p.stat().st_size, path=p)
         for p in sorted(folder.rglob("*"))
         if p.is_file() and not any(part.startswith(".") for part in p.relative_to(folder).parts)
     ]

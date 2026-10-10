@@ -306,7 +306,8 @@ def sample(experiment_name: str, n: int, out_dir: Path | None = None, oversample
                 "note": "DataCite random sampling has no seed; records.jsonl is the reproducible sample.",
             },
             indent=2,
-        )
+        ),
+        encoding="utf-8",
     )
     write_handcheck(out_dir, records, qs)
     return out_dir / "records.jsonl"

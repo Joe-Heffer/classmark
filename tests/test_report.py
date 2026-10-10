@@ -73,7 +73,7 @@ def test_e1_report(workspace):
         write_jsonl(config.RESULTS_DIR / qs.experiment / f"{b}.jsonl", rows)
 
     path = build_report("e1")
-    text = path.read_text()
+    text = path.read_text(encoding="utf-8")
     assert "## Resource type" in text and "Coverage at 95%" in text
     assert (path.parent / "reliability_resource_type.png").exists()
     assert (path.parent / "coverage_resource_type.png").exists()
@@ -99,6 +99,6 @@ def test_e2_report(workspace):
     write_jsonl(config.DATA_DIR / qs.experiment / "records.jsonl", records)
     write_jsonl(config.RESULTS_DIR / qs.experiment / "jev.jsonl", rows)
 
-    text = build_report("e2").read_text()
+    text = build_report("e2").read_text(encoding="utf-8")
     assert "## Broad field" in text and "## Subfield" in text
     assert "beam search" in text
