@@ -3,7 +3,7 @@ name = "classmark"
 version = "0.1.0"
 description = "Classify research datasets against controlled vocabularies with calibrated confidence (Data Director evaluation prototype)"
 authors = [
-    { name = "Joe Heffer", email = "jheffer@gmail.com" }
+    { name = "Joe Heffer" }
 ]
 requires-python = ">=3.12"
 readme = "README.md"
@@ -88,5 +88,5 @@ dev = [
     "pre-commit>=4.3.0",
     "pytest>=9.1.1",
     "pytest-cov>=7.0.0",
-    "ruff>=0.14.0",
+    "ruff>=0.17.0",
 ]

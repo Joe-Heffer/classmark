@@ -1,0 +1,22 @@
+name: Feature request
+description: Suggest a new feature, question set or experiment
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: For a new question set, give the vocabulary, its options and where gold labels would come from.
+    validations:
+      required: true
+  - type: textarea
+    id: blueprint
+    attributes:
+      label: Relationship to the Data Director Blueprint
+      description: Which requirement (R1–R12) or constraint (C1–C17) does this relate to, if any? See docs/requirements-mapping.md.
