@@ -32,18 +32,19 @@ def beam_search(answers: dict[str, dict], root: str, width: int = 3) -> list[dic
                 finished.append(cand)
                 continue
             for option, p in answer["probabilities"].items():
-                expanded.append({
-                    "path": (*cand["path"], option),
-                    "log_sum": cand["log_sum"] + math.log(max(p, 1e-12)),
-                    "edges": [*cand["edges"], p],
-                })
+                expanded.append(
+                    {
+                        "path": (*cand["path"], option),
+                        "log_sum": cand["log_sum"] + math.log(max(p, 1e-12)),
+                        "edges": [*cand["edges"], p],
+                    }
+                )
         pool = sorted(finished + expanded, key=_score, reverse=True)[:width]
         finished = [c for c in pool if not _expandable(c, answers, root)]
         beam = [c for c in pool if _expandable(c, answers, root)]
     ranked = sorted(finished, key=_score, reverse=True)
     return [
-        {"path": list(c["path"]), "score": _score(c), "joint_probability": math.prod(c["edges"]),
-         "edges": c["edges"]}
+        {"path": list(c["path"]), "score": _score(c), "joint_probability": math.prod(c["edges"]), "edges": c["edges"]}
         for c in ranked
     ]
 

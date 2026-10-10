@@ -13,7 +13,7 @@ cost. This audit log is the traceability record (Blueprint P5, R10, C13).
 import hashlib
 import json
 import threading
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from classmark import config
@@ -54,7 +54,7 @@ class Cache:
 
 
 def now() -> str:
-    return datetime.now(timezone.utc).isoformat(timespec="milliseconds")
+    return datetime.now(UTC).isoformat(timespec="milliseconds")
 
 
 class AuditLog:

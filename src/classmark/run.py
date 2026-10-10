@@ -15,7 +15,7 @@ import json
 import subprocess
 import threading
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from classmark import config
@@ -51,8 +51,7 @@ class Budget:
 
 def git_commit() -> str | None:
     try:
-        return subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True,
-                              check=True).stdout.strip()
+        return subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True).stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         return None
 
@@ -67,8 +66,9 @@ def load_or_build_state(record: dict, experiment: str, exclude: list[str], clien
     profile = profile_record(record, client, exclude=exclude)
     profile.meta["exclude"] = list(exclude)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({"state": profile.state, "meta": profile.meta}, ensure_ascii=False, indent=1),
-                    encoding="utf-8")
+    path.write_text(
+        json.dumps({"state": profile.state, "meta": profile.meta}, ensure_ascii=False, indent=1), encoding="utf-8"
+    )
     return profile
 
 
@@ -87,7 +87,7 @@ def run(
     backend = get_backend(backend_name)
     questions = qs.all_questions(reverse_options=reverse_options)
     variant = backend_name + ("-reversed" if reverse_options else "")
-    started = datetime.now(timezone.utc)
+    started = datetime.now(UTC)
     run_id = f"{started:%Y%m%dT%H%M%SZ}_{exp}_{variant}" + ("_dryrun" if dry_run else "")
     qs_file = next(config.QUESTIONS_DIR.glob(f"{exp}*.yaml"))
 
@@ -96,14 +96,23 @@ def run(
     states = {r["doi"]: load_or_build_state(r, exp, qs.exclude_from_state, http) for r in records}
 
     log = AuditLog(run_id)
-    log.write({
-        "event": "run_start", "run_id": run_id, "experiment": exp, "backend": backend.name,
-        "model": backend.model, "settings": backend.settings(), "records": len(records),
-        "budget_usd": budget_usd, "dry_run": dry_run, "reverse_options": reverse_options,
-        "question_set": str(qs_file.relative_to(config.ROOT)),
-        "question_set_sha256": hashlib.sha256(qs_file.read_bytes()).hexdigest(),
-        "git_commit": git_commit(),
-    })
+    log.write(
+        {
+            "event": "run_start",
+            "run_id": run_id,
+            "experiment": exp,
+            "backend": backend.name,
+            "model": backend.model,
+            "settings": backend.settings(),
+            "records": len(records),
+            "budget_usd": budget_usd,
+            "dry_run": dry_run,
+            "reverse_options": reverse_options,
+            "question_set": str(qs_file.relative_to(config.ROOT)),
+            "question_set_sha256": hashlib.sha256(qs_file.read_bytes()).hexdigest(),
+            "git_commit": git_commit(),
+        }
+    )
 
     requests = []
     for r in records:
@@ -120,10 +129,21 @@ def run(
                 tin, tout = backend.estimate_tokens(payload)
                 est = backend.cost(tin, tout)
                 total += est
-                f.write(json.dumps({"doi": r["doi"], "key": key, "estimated_input_tokens": tin,
-                                    "estimated_max_output_tokens": tout, "estimated_max_cost_usd": est,
-                                    "state_meta": states[r["doi"]].meta, "payload": payload},
-                                   ensure_ascii=False) + "\n")
+                f.write(
+                    json.dumps(
+                        {
+                            "doi": r["doi"],
+                            "key": key,
+                            "estimated_input_tokens": tin,
+                            "estimated_max_output_tokens": tout,
+                            "estimated_max_cost_usd": est,
+                            "state_meta": states[r["doi"]].meta,
+                            "payload": payload,
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                )
         log.write({"event": "dry_run", "requests": len(requests), "estimated_max_cost_usd": total})
         print(f"Dry run: {len(requests)} requests written to {out}")
         print(f"Estimated worst-case cost: ${total:.4f} (budget ${budget_usd:.2f}). No model API was called.")
@@ -137,8 +157,16 @@ def run(
         base = {"doi": r["doi"], "key": key, "labels": r["labels"], "noise_flags": r["noise_flags"]}
         hit = cache.get(key)
         if hit:
-            log.write({"event": "request", "cached": True, "doi": r["doi"], "key": key,
-                       "model": hit["response"]["model"], "request_id": hit["response"]["request_id"]})
+            log.write(
+                {
+                    "event": "request",
+                    "cached": True,
+                    "doi": r["doi"],
+                    "key": key,
+                    "model": hit["response"]["model"],
+                    "request_id": hit["response"]["request_id"],
+                }
+            )
             return {**base, **hit["response"], "cached": True}
         if stop.is_set():
             return {**base, "skipped": "budget"}
@@ -146,28 +174,58 @@ def run(
         estimate = backend.cost(tin, tout)
         if not budget.reserve(estimate):
             stop.set()
-            log.write({"event": "budget_stop", "doi": r["doi"], "spent_usd": budget.spent,
-                       "estimate_usd": estimate, "budget_usd": budget.limit})
+            log.write(
+                {
+                    "event": "budget_stop",
+                    "doi": r["doi"],
+                    "spent_usd": budget.spent,
+                    "estimate_usd": estimate,
+                    "budget_usd": budget.limit,
+                }
+            )
             return {**base, "skipped": "budget"}
         try:
             resp = backend.call(payload, questions)
         except Exception as e:
             budget.settle(estimate, 0.0)
-            log.write({"event": "error", "doi": r["doi"], "key": key, "payload": payload,
-                       "error": f"{type(e).__name__}: {e}"})
+            log.write(
+                {"event": "error", "doi": r["doi"], "key": key, "payload": payload, "error": f"{type(e).__name__}: {e}"}
+            )
             return {**base, "error": f"{type(e).__name__}: {e}"}
         cost = backend.cost(resp.input_tokens, resp.output_tokens)
         budget.settle(estimate, cost)
         record = {
-            "answers": resp.answers, "model": resp.model, "input_tokens": resp.input_tokens,
-            "output_tokens": resp.output_tokens, "latency_s": resp.latency_s,
-            "request_id": resp.request_id, "cost_usd": cost, "diagnostics": resp.diagnostics,
+            "answers": resp.answers,
+            "model": resp.model,
+            "input_tokens": resp.input_tokens,
+            "output_tokens": resp.output_tokens,
+            "latency_s": resp.latency_s,
+            "request_id": resp.request_id,
+            "cost_usd": cost,
+            "diagnostics": resp.diagnostics,
         }
         if resp.answers:  # never cache a failed answer
-            cache.put(key, {"backend": backend.name, "payload": payload, "response": record,
-                            "raw": resp.raw, "answered_at": datetime.now(timezone.utc).isoformat()})
-        log.write({"event": "request", "cached": False, "doi": r["doi"], "key": key,
-                   "payload": payload, "response": resp.raw, **record})
+            cache.put(
+                key,
+                {
+                    "backend": backend.name,
+                    "payload": payload,
+                    "response": record,
+                    "raw": resp.raw,
+                    "answered_at": datetime.now(UTC).isoformat(),
+                },
+            )
+        log.write(
+            {
+                "event": "request",
+                "cached": False,
+                "doi": r["doi"],
+                "key": key,
+                "payload": payload,
+                "response": resp.raw,
+                **record,
+            }
+        )
         if not resp.answers:
             return {**base, **record, "error": resp.diagnostics.get("error", "no answers")}
         return {**base, **record, "cached": False}
@@ -189,14 +247,17 @@ def run(
             f.write(json.dumps(res, ensure_ascii=False) + "\n")
 
     summary = {
-        "event": "run_end", "answered": sum(1 for x in results if "answers" in x and x["answers"]),
+        "event": "run_end",
+        "answered": sum(1 for x in results if "answers" in x and x["answers"]),
         "cached": sum(1 for x in results if x.get("cached")),
         "errors": sum(1 for x in results if "error" in x),
         "skipped_budget": sum(1 for x in results if x.get("skipped") == "budget"),
         "spent_usd": budget.spent,
     }
     log.write(summary)
-    print(f"{summary['answered']} answered ({summary['cached']} from cache), {summary['errors']} errors, "
-          f"{summary['skipped_budget']} skipped for budget; ${budget.spent:.4f} spent this run")
+    print(
+        f"{summary['answered']} answered ({summary['cached']} from cache), {summary['errors']} errors, "
+        f"{summary['skipped_budget']} skipped for budget; ${budget.spent:.4f} spent this run"
+    )
     print(f"Results: {out}\nAudit log: {log.path}")
     return out

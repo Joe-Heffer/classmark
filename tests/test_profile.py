@@ -17,8 +17,9 @@ from classmark.profile import (
 
 @pytest.fixture
 def folder(tmp_path):
-    (tmp_path / "obs.csv").write_text("site,date,temp_c\nA,2020-01-01,3.2\nB,2020-01-02,4.1\n"
-                                      "C,2020-01-03,5.0\nD,2020-01-04,6.3\n")
+    (tmp_path / "obs.csv").write_text(
+        "site,date,temp_c\nA,2020-01-01,3.2\nB,2020-01-02,4.1\nC,2020-01-03,5.0\nD,2020-01-04,6.3\n"
+    )
     (tmp_path / "README.md").write_text("# Weather observations\nDaily temperature in degrees Celsius.\n")
     (tmp_path / "LICENCE").write_text("Creative Commons Attribution 4.0 International\n")
     (tmp_path / "blob").write_bytes(b"\x89HDF\r\n\x1a\n" + b"\x00" * 8)

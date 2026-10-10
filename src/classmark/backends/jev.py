@@ -46,9 +46,7 @@ class JevBackend(Backend):
 
     def call(self, payload: dict, questions: dict[str, Question]) -> Response:
         start = time.perf_counter()
-        result = self.client.system_one(
-            state=payload["state"], questions=payload["questions"], model=payload["model"]
-        )
+        result = self.client.system_one(state=payload["state"], questions=payload["questions"], model=payload["model"])
         latency = time.perf_counter() - start
         raw = result.raw_http_response.json()
         answers = {}

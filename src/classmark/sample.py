@@ -14,7 +14,7 @@ import csv
 import json
 import math
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from classmark import config
@@ -33,19 +33,74 @@ HANDCHECK_SIZE = 50
 
 # File-extension groups used by the label-noise heuristics.
 DATA_EXT = {
-    "csv", "tsv", "xlsx", "xls", "ods", "json", "nc", "nc4", "h5", "hdf5", "he5",
-    "mat", "npy", "npz", "parquet", "feather", "sav", "dta", "rds", "rdata",
-    "sqlite", "db", "shp", "geojson", "gpkg", "fits", "dat", "xml", "jsonl",
+    "csv",
+    "tsv",
+    "xlsx",
+    "xls",
+    "ods",
+    "json",
+    "nc",
+    "nc4",
+    "h5",
+    "hdf5",
+    "he5",
+    "mat",
+    "npy",
+    "npz",
+    "parquet",
+    "feather",
+    "sav",
+    "dta",
+    "rds",
+    "rdata",
+    "sqlite",
+    "db",
+    "shp",
+    "geojson",
+    "gpkg",
+    "fits",
+    "dat",
+    "xml",
+    "jsonl",
 }
-CODE_EXT = {"py", "r", "m", "jl", "cpp", "c", "h", "java", "js", "ts", "go", "rs",
-            "ipynb", "sh", "f90", "f", "pl", "rb", "scala", "cs"}
+CODE_EXT = {
+    "py",
+    "r",
+    "m",
+    "jl",
+    "cpp",
+    "c",
+    "h",
+    "java",
+    "js",
+    "ts",
+    "go",
+    "rs",
+    "ipynb",
+    "sh",
+    "f90",
+    "f",
+    "pl",
+    "rb",
+    "scala",
+    "cs",
+}
 DOC_EXT = {"pdf", "doc", "docx", "odt", "ppt", "pptx", "odp", "epub", "tex"}
 IMAGE_EXT = {"jpg", "jpeg", "png", "gif", "tif", "tiff", "svg", "bmp", "webp"}
 AV_EXT = {"mp4", "mov", "avi", "mkv", "webm", "m4v"}
 SOUND_EXT = {"mp3", "wav", "flac", "ogg", "m4a", "aac"}
 ARCHIVE_EXT = {"zip", "gz", "tgz", "tar", "7z", "bz2", "xz", "rar"}
-TEXT_TYPES = {"Text", "JournalArticle", "Preprint", "Report", "Book", "BookChapter",
-              "ConferencePaper", "Dissertation", "DataPaper"}
+TEXT_TYPES = {
+    "Text",
+    "JournalArticle",
+    "Preprint",
+    "Report",
+    "Book",
+    "BookChapter",
+    "ConferencePaper",
+    "Dissertation",
+    "DataPaper",
+}
 
 
 def norm(s: str) -> str:
@@ -65,8 +120,7 @@ def e1_strata(client: PoliteClient, qs: QuestionSet) -> list[tuple[str, str]]:
     options = list(qs.questions["resource_type"].options)
     meta = client.get_json(
         DATACITE_API,
-        params={"client-id": "cern.zenodo", "page[size]": 1,
-                "disable-facets": "false", "facets": "resourceTypes"},
+        params={"client-id": "cern.zenodo", "page[size]": 1, "disable-facets": "false", "facets": "resourceTypes"},
     )["meta"]
     counts = {norm(f["id"]): f["count"] for f in meta.get("resourceTypes", [])}
     options.sort(key=lambda o: -counts.get(norm(o), 0))
@@ -89,9 +143,7 @@ def e2_strata(client: PoliteClient, qs: QuestionSet) -> list[tuple[str, str]]:
     for top, node in qs.hierarchy.options.items():
         names = [top, *(node.children or {})]
         subjects = " OR ".join(f'"FOS: {n}"' for n in names)
-        strata.append(
-            (top, f"types.resourceTypeGeneral:Dataset AND subjects.subject:({subjects})")
-        )
+        strata.append((top, f"types.resourceTypeGeneral:Dataset AND subjects.subject:({subjects})"))
     return strata
 
 
@@ -169,10 +221,7 @@ def build_record(experiment: str, item: dict, zen: dict, qs: QuestionSet, stratu
     meta = zen.get("metadata", {})
     if meta.get("access_right") != "open":
         return None
-    files = [
-        {"key": f["key"], "size": f.get("size", 0), "url": f["links"]["self"]}
-        for f in zen.get("files") or []
-    ]
+    files = [{"key": f["key"], "size": f.get("size", 0), "url": f["links"]["self"]} for f in zen.get("files") or []]
     if not files:
         return None
     attrs = item["attributes"]
@@ -241,15 +290,19 @@ def sample(experiment_name: str, n: int, out_dir: Path | None = None, oversample
         json.dumps(
             {
                 "experiment": exp,
-                "drawn_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                "drawn_at": datetime.now(UTC).isoformat(timespec="seconds"),
                 "source": f"{DATACITE_API} (random=true, client-id=cern.zenodo) "
-                          "joined to https://zenodo.org/api/records/<id>",
+                "joined to https://zenodo.org/api/records/<id>",
                 "strata": dict(strata),
                 "requested": n,
                 "candidates_checked": checked,
                 "kept": len(records),
-                "filters": ["version DOIs only (no concept DOIs)", "one version per Zenodo concept record", "access_right == open",
-                            "at least one file"],
+                "filters": [
+                    "version DOIs only (no concept DOIs)",
+                    "one version per Zenodo concept record",
+                    "access_right == open",
+                    "at least one file",
+                ],
                 "note": "DataCite random sampling has no seed; records.jsonl is the reproducible sample.",
             },
             indent=2,
@@ -288,5 +341,4 @@ def load_handcheck(experiment: str) -> dict[str, str]:
     if not path.exists():
         return {}
     with path.open(encoding="utf-8") as f:
-        return {row["doi"]: row["checked_label"].strip()
-                for row in csv.DictReader(f) if row["checked_label"].strip()}
+        return {row["doi"]: row["checked_label"].strip() for row in csv.DictReader(f) if row["checked_label"].strip()}

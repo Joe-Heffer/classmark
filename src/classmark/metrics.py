@@ -23,9 +23,9 @@ def macro_f1(y_true: Sequence, y_pred: Sequence, labels: Sequence | None = None)
     labels = list(dict.fromkeys(labels if labels is not None else y_true))
     f1s = []
     for c in labels:
-        tp = sum(t == c and p == c for t, p in zip(y_true, y_pred))
-        fp = sum(t != c and p == c for t, p in zip(y_true, y_pred))
-        fn = sum(t == c and p != c for t, p in zip(y_true, y_pred))
+        tp = sum(t == c and p == c for t, p in zip(y_true, y_pred, strict=True))
+        fp = sum(t != c and p == c for t, p in zip(y_true, y_pred, strict=True))
+        fn = sum(t == c and p != c for t, p in zip(y_true, y_pred, strict=True))
         denom = 2 * tp + fp + fn
         f1s.append(2 * tp / denom if denom else 0.0)
     return float(np.mean(f1s))
@@ -51,11 +51,15 @@ def reliability_bins(confidence: Sequence[float], correct: Sequence[bool], n_bin
     bins = []
     for b in range(n_bins):
         mask = idx == b
-        bins.append({
-            "lower": float(edges[b]), "upper": float(edges[b + 1]), "count": int(mask.sum()),
-            "mean_confidence": float(conf[mask].mean()) if mask.any() else None,
-            "accuracy": float(corr[mask].mean()) if mask.any() else None,
-        })
+        bins.append(
+            {
+                "lower": float(edges[b]),
+                "upper": float(edges[b + 1]),
+                "count": int(mask.sum()),
+                "mean_confidence": float(conf[mask].mean()) if mask.any() else None,
+                "accuracy": float(corr[mask].mean()) if mask.any() else None,
+            }
+        )
     return bins
 
 
@@ -67,10 +71,13 @@ def expected_calibration_error(confidence: Sequence[float], correct: Sequence[bo
     n = len(confidence)
     if n == 0:
         return float("nan")
-    return float(sum(
-        b["count"] / n * abs(b["accuracy"] - b["mean_confidence"])
-        for b in reliability_bins(confidence, correct, n_bins) if b["count"]
-    ))
+    return float(
+        sum(
+            b["count"] / n * abs(b["accuracy"] - b["mean_confidence"])
+            for b in reliability_bins(confidence, correct, n_bins)
+            if b["count"]
+        )
+    )
 
 
 def brier_binary(probability: Sequence[float], outcome: Sequence[bool]) -> float:
@@ -91,8 +98,7 @@ def coverage_curve(confidence: Sequence[float], correct: Sequence[bool]) -> list
     points = []
     for t in sorted(set(conf.tolist()), reverse=True):
         mask = conf >= t
-        points.append({"threshold": t, "coverage": float(mask.sum() / n),
-                       "accuracy": float(corr[mask].mean())})
+        points.append({"threshold": t, "coverage": float(mask.sum() / n), "accuracy": float(corr[mask].mean())})
     return points
 
 

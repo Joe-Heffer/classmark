@@ -8,6 +8,26 @@ authors = [
 requires-python = ">=3.12"
 readme = "README.md"
 license = "Apache-2.0"
+license-files = ["LICENSE"]
+keywords = [
+    "research data",
+    "metadata",
+    "FAIR",
+    "classification",
+    "calibration",
+    "DataCite",
+    "Zenodo",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+]
 dependencies = [
     "anthropic>=1.13.0",
     "httpx>=0.28.1",
@@ -24,11 +44,40 @@ scientific = [
     "netcdf4>=1.7.4",
 ]
 
+[project.urls]
+Homepage = "https://github.com/Joe-Heffer/classmark"
+Repository = "https://github.com/Joe-Heffer/classmark"
+Issues = "https://github.com/Joe-Heffer/classmark/issues"
+Changelog = "https://github.com/Joe-Heffer/classmark/blob/main/CHANGELOG.md"
+
 [project.scripts]
 classmark = "classmark.cli:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+addopts = ["--strict-markers"]
+
+[tool.coverage.run]
+source = ["classmark"]
+branch = true
+
+[tool.coverage.report]
+show_missing = true
+skip_empty = true
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+]
 
 [build-system]
 requires = ["uv_build>=0.12.7,<0.13.0"]
@@ -36,5 +85,8 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "pre-commit>=4.3.0",
     "pytest>=9.1.1",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.14.0",
 ]

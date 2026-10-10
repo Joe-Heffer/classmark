@@ -39,12 +39,16 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("experiment")
     p.add_argument("--backend", choices=["jev", "claude"], required=True)
     p.add_argument("--n", type=int, help="use only the first N sampled records")
-    p.add_argument("--budget", type=float, default=config.DEFAULT_BUDGET_USD,
-                   help=f"hard spending limit in US$ for this run (default {config.DEFAULT_BUDGET_USD})")
-    p.add_argument("--dry-run", action="store_true",
-                   help="build states and requests but do not call any model API")
-    p.add_argument("--reverse-options", action="store_true",
-                   help="ask with Choice options in reverse order (position-bias check)")
+    p.add_argument(
+        "--budget",
+        type=float,
+        default=config.DEFAULT_BUDGET_USD,
+        help=f"hard spending limit in US$ for this run (default {config.DEFAULT_BUDGET_USD})",
+    )
+    p.add_argument("--dry-run", action="store_true", help="build states and requests but do not call any model API")
+    p.add_argument(
+        "--reverse-options", action="store_true", help="ask with Choice options in reverse order (position-bias check)"
+    )
     p.add_argument("--workers", type=int, default=4)
 
     p = sub.add_parser("report", help="evaluate results and write reports/<experiment>/report.md")
@@ -64,8 +68,15 @@ def main(argv: list[str] | None = None) -> int:
     elif args.command == "run":
         from classmark.run import run
 
-        run(args.experiment, args.backend, n=args.n, budget_usd=args.budget, dry_run=args.dry_run,
-            reverse_options=args.reverse_options, workers=args.workers)
+        run(
+            args.experiment,
+            args.backend,
+            n=args.n,
+            budget_usd=args.budget,
+            dry_run=args.dry_run,
+            reverse_options=args.reverse_options,
+            workers=args.workers,
+        )
     elif args.command == "report":
         from classmark.report import build_report
 
